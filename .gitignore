@@ -1,0 +1,13 @@
+venv/
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.db
+*.sqlite3
+.DS_Store
+.env
+echo "venv/" >> .gitignore
+shape_predictor_68_face_landmarks.dat
+*.so
+*.dylib
