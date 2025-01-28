@@ -103,6 +103,37 @@ class PupilDetector:
         )
         
         return measurement
+    
+    # Add to PupilDetector class:
+
+    def calculate_measurement_quality(self, landmarks, left_center, right_center):
+        """Calculate measurement quality based on multiple factors"""
+        # Check face orientation
+        nose_tip = landmarks.landmark[4]  # Nose tip landmark
+        face_orientation = abs(0.5 - nose_tip.x)  # How centered the face is
+        
+        # Check eye openness using eye landmarks
+        left_eye_top = landmarks.landmark[386].y
+        left_eye_bottom = landmarks.landmark[374].y
+        right_eye_top = landmarks.landmark[159].y
+        right_eye_bottom = landmarks.landmark[145].y
+        
+        eye_openness = min(
+            abs(left_eye_top - left_eye_bottom),
+            abs(right_eye_top - right_eye_bottom)
+        )
+        
+        # Check gaze direction using iris centers
+        gaze_center = abs(0.5 - (left_center[0] + right_center[0]) / 2)
+        
+        # Calculate overall quality score (0-1)
+        orientation_score = max(0, 1 - face_orientation * 4)  # Penalize if face is not centered
+        eye_score = min(1, eye_openness * 10)  # Ensure eyes are open enough
+        gaze_score = max(0, 1 - gaze_center * 4)  # Penalize if not looking straight
+        
+        quality = (orientation_score * 0.4 + eye_score * 0.3 + gaze_score * 0.3)
+        return round(min(1.0, quality), 2)  # Round to 2 decimal places, ensure score doesn't exceed 1.0
+
 
     def release(self):
         """Release MediaPipe resources"""

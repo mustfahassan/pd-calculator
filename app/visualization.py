@@ -6,9 +6,9 @@ from dataclasses import dataclass
 @dataclass
 class VisualizationConfig:
     """Configuration for visualization settings"""
-    text_color: Tuple[int, int, int] = (0, 255, 0)
-    guide_color: Tuple[int, int, int] = (255, 255, 255)
-    error_color: Tuple[int, int, int] = (0, 0, 255)
+    text_color: Tuple[int, int, int] = (255, 255, 255)  # White text
+    guide_color: Tuple[int, int, int] = (255, 255, 255)  # White guide
+    error_color: Tuple[int, int, int] = (255, 255, 255)  # Keep all text white
     font_scale: float = 0.6
     thickness: int = 2
 
@@ -82,9 +82,21 @@ class WebcamHandler:
     
     def __init__(self, camera_id: int = 0, width: int = 640, height: int = 480):
         """Initialize webcam capture"""
-        self.cap = cv2.VideoCapture(camera_id)
-        self.cap.set(cv2.CAP_PROP_FRAME_WIDTH, width)
-        self.cap.set(cv2.CAP_PROP_FRAME_HEIGHT, height)
+        self.camera_id = camera_id
+        self.width = width
+        self.height = height
+        self.cap = None
+        self.initialize_camera()
+        
+    def initialize_camera(self):
+        """Initialize or reinitialize the camera"""
+        if self.cap is not None:
+            self.cap.release()
+        self.cap = cv2.VideoCapture(self.camera_id)
+        self.cap.set(cv2.CAP_PROP_FRAME_WIDTH, self.width)
+        self.cap.set(cv2.CAP_PROP_FRAME_HEIGHT, self.height)
+        if not self.cap.isOpened():
+            raise RuntimeError("Could not initialize camera")
         self.config = VisualizationConfig()
         self.guide = None
 
@@ -119,48 +131,24 @@ class WebcamHandler:
         return frame
 
     def add_instruction_text(self, frame, text: str, is_error: bool = False):
-        """Add instruction text to frame with better styling"""
+        """Add instruction text to frame"""
         height = frame.shape[0]
-        width = frame.shape[1]
         
-        # Create rounded rectangle background
+        # Add semi-transparent black background
         overlay = frame.copy()
-        
-        # Calculate text size to make background dynamic
-        (text_width, text_height), _ = cv2.getTextSize(
-            text, cv2.FONT_HERSHEY_SIMPLEX, 0.8, 2
-        )
-        
-        # Background parameters
-        padding = 20
-        bg_width = text_width + padding * 2
-        bg_height = 50
-        start_x = (width - bg_width) // 2
-        start_y = height - 80
-        
-        # Draw background with gradient
-        cv2.rectangle(overlay, 
-                     (start_x, start_y),
-                     (start_x + bg_width, start_y + bg_height),
-                     (40, 40, 40), -1)
+        cv2.rectangle(overlay, (0, height-60), (frame.shape[1], height), 
+                     (0, 0, 0), -1)
         cv2.addWeighted(overlay, 0.7, frame, 0.3, 0, frame)
         
-        # Add white border
-        cv2.rectangle(frame,
-                     (start_x, start_y),
-                     (start_x + bg_width, start_y + bg_height),
-                     (255, 255, 255), 1)
+        # Center text
+        text_size = cv2.getTextSize(text, cv2.FONT_HERSHEY_SIMPLEX, 0.8, 2)[0]
+        text_x = (frame.shape[1] - text_size[0]) // 2
         
-        # Calculate text position to center it
-        text_x = start_x + (bg_width - text_width) // 2
-        text_y = start_y + (bg_height + text_height) // 2
-        
-        # Add text with white color and black outline for better visibility
-        color = (255, 255, 255)  # Always white for better readability
-        cv2.putText(frame, text, (text_x, text_y),
-                   cv2.FONT_HERSHEY_SIMPLEX, 0.8, (0, 0, 0), 4)  # outline
-        cv2.putText(frame, text, (text_x, text_y),
-                   cv2.FONT_HERSHEY_SIMPLEX, 0.8, color, 2)
+        # Add white text with slight outline for better visibility
+        cv2.putText(frame, text, (text_x, height-20), 
+                   cv2.FONT_HERSHEY_SIMPLEX, 0.8, (0, 0, 0), 4)  # Black outline
+        cv2.putText(frame, text, (text_x, height-20), 
+                   cv2.FONT_HERSHEY_SIMPLEX, 0.8, (255, 255, 255), 2)  # White text
         
         return frame
 
