@@ -4,8 +4,7 @@ import time
 import numpy as np
 from .measurements import PupilDetector, PupilMeasurement
 from .visualization import WebcamHandler
-import threading
-import queue
+from .resource_manager import ResourceManager
 
 # Create blueprint
 pupil_bp = Blueprint('pupil', __name__)
@@ -56,10 +55,10 @@ def process_frame(frame):
                 if measurement:
                     # Calculate quality score using the existing function
                     quality = detector.calculate_measurement_quality(
-                    results.multi_face_landmarks[0],
-                    detector._calculate_iris_center(results.multi_face_landmarks[0], detector.LEFT_IRIS),
-                    detector._calculate_iris_center(results.multi_face_landmarks[0], detector.RIGHT_IRIS)
-                )
+                        results.multi_face_landmarks[0],
+                        detector._calculate_iris_center(results.multi_face_landmarks[0], detector.LEFT_IRIS),
+                        detector._calculate_iris_center(results.multi_face_landmarks[0], detector.RIGHT_IRIS)
+                    )
                     measurement.confidence = quality  # Update measurement quality
                     measurement_buffer.append(measurement)
                     
@@ -181,12 +180,19 @@ def get_measurement():
 
 @pupil_bp.route('/stop', methods=['POST'])
 def stop():
-    """Stop video streaming"""
-    global is_running, camera_started
-    is_running = False
-    camera_started = False
-    webcam_handler.release()
-    return jsonify({'status': 'success'})
+    """Stop video streaming and cleanup resources"""
+    try:
+        ResourceManager.cleanup_resources()
+        return jsonify({'status': 'success'})
+    except Exception as e:
+        print(f"Error in stop route: {str(e)}")
+        return jsonify({'status': 'error', 'message': str(e)}), 500
+    finally:
+        # Force cleanup attempt even if error occurs
+        try:
+            ResourceManager.cleanup_resources()
+        except:
+            pass
 
 # Error handlers
 @pupil_bp.errorhandler(Exception)

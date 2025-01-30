@@ -136,5 +136,24 @@ class PupilDetector:
 
 
     def release(self):
-        """Release MediaPipe resources"""
-        self.face_mesh.close()
+        """Enhanced release method with thorough cleanup"""
+        try:
+            if hasattr(self, 'cap') and self.cap is not None:
+                # Release OpenCV capture
+                self.cap.release()
+                self.cap = None
+                
+                # Force cleanup of any remaining CV2 windows
+                cv2.destroyAllWindows()
+                
+                # Additional cleanup for macOS
+                if self.is_macos:
+                    for i in range(5):  # Sometimes needed to ensure complete cleanup
+                        cv2.waitKey(1)
+                
+                print("Webcam resources released successfully.")
+        except Exception as e:
+            print(f"Error during webcam release: {str(e)}")
+        finally:
+            self.cap = None
+            self.guide = None

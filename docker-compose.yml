@@ -2,11 +2,31 @@ version: '3.8'
 
 services:
   web:
-    build: .
+    build: 
+      context: .
+      dockerfile: Dockerfile
     ports:
       - "8000:8000"
     environment:
       - FLASK_ENV=production
+      - FLASK_APP=run.py
+      - PYTHONUNBUFFERED=1
+      - OPENCV_VIDEOIO_PRIORITY_MSMF=0
+      - OPENCV_VIDEOIO_DEBUG=1
+      - OPENCV_LOG_LEVEL=DEBUG
     volumes:
       - .:/app
-    command: gunicorn --bind 0.0.0.0:8000 --workers 4 run:app
+      - /tmp/.X11-unix:/tmp/.X11-unix
+    privileged: true
+    devices:
+      - /dev/video0:/dev/video0
+    command: >
+      gunicorn
+      --bind 0.0.0.0:8000
+      --worker-class gthread
+      --workers 1
+      --threads 4
+      --timeout 120
+      --log-level debug
+      --reload
+      "run:app"

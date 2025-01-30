@@ -234,14 +234,17 @@
 
         async function getMeasurement() {
             try {
+                console.log("Getting measurement..."); // Debug log
                 const response = await fetch('/get_measurement');
                 const data = await response.json();
+                console.log("Measurement data:", data); // Debug log
 
                 if (data.pd_mm) {
-                    pdValue.textContent = `${data.pd_mm} mm`;
+                    // Update PD value
+                    pdValue.textContent = `${Math.round(data.pd_mm)} mm`;
 
-                    // Ensure confidence value is correctly calculated
-                    const qualityScore = data.confidence.toFixed(0);  // Remove *100 if backend already returns percentage
+                    // Update confidence value
+                    const qualityScore = Math.round(data.confidence); // Ensure it's rounded
                     confidenceValue.textContent = `${qualityScore}%`;
 
                     // Add color coding for quality
@@ -253,17 +256,37 @@
                         confidenceValue.style.color = '#dc3545'; // Red for needs improvement
                     }
 
+                    // Show results card
                     resultsCard.style.display = 'block';
 
-                    // Stop camera feed
-                    await fetch('/stop', { method: 'POST' });
-                    videoFeed.style.display = 'none';
-                    stopBtn.style.display = 'none';
-                    measureBtn.textContent = 'Measure Again';
-                    measureBtn.style.display = 'block';
+                    // Stop camera feed and update UI
+                    try {
+                        await fetch('/stop', { method: 'POST' });
+                        videoFeed.style.display = 'none';
+                        stopBtn.style.display = 'none';
+                        measureBtn.textContent = 'Measure Again';
+                        measureBtn.style.display = 'block';
+                        stabilityProgress.style.width = '0%';
+                    } catch (error) {
+                        console.error('Error stopping camera:', error);
+                    }
+                } else {
+                    console.log("No measurement data received"); // Debug log
+                    // Handle no measurement case
+                    pdValue.textContent = "-- mm";
+                    confidenceValue.textContent = "--%";
+                    resultsCard.style.display = 'block';
+                    
+                    // Show error message
+                    const errorMessage = data.message || "Measurement failed. Please try again.";
+                    statusMessage.textContent = errorMessage;
+                    statusMessage.style.display = 'block';
                 }
             } catch (error) {
                 console.error('Error getting measurement:', error);
+                // Show error to user
+                statusMessage.textContent = "Error getting measurement. Please try again.";
+                statusMessage.style.display = 'block';
             }
         }
 

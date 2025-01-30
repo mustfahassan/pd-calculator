@@ -1,24 +1,43 @@
-# Use a pre-built Python image with OpenCV
-FROM jjanzic/docker-python3-opencv:latest
+# Use Python 3.9 slim image
+FROM python:3.9-slim
+
+# Install system dependencies
+RUN apt-get update && apt-get install -y \
+    libgl1-mesa-glx \
+    libglib2.0-0 \
+    libsm6 \
+    libxext6 \
+    libxrender-dev \
+    libx11-6 \
+    libavcodec-extra \
+    libavformat-dev \
+    libswscale-dev \
+    x11-utils \
+    && rm -rf /var/lib/apt/lists/*
 
 # Set environment variables
 ENV PYTHONDONTWRITEBYTECODE=1
 ENV PYTHONUNBUFFERED=1
+ENV QT_X11_NO_MITSHM=1
+ENV FLASK_APP=run.py
+ENV FLASK_ENV=production
 
-# Set the working directory in the container
+# Set the working directory
 WORKDIR /app
 
-# Copy the requirements file into the container
+# Install Python dependencies
 COPY requirements.txt .
-
-# Install Python dependencies (excluding opencv-python)
 RUN pip install --no-cache-dir --default-timeout=1000 -r requirements.txt
 
-# Copy the rest of the application code
+# Copy the application code
 COPY . .
 
-# Expose the port the app runs on
+# Create a non-root user and switch to it
+RUN useradd -m appuser && chown -R appuser:appuser /app
+USER appuser
+
+# Expose the port
 EXPOSE 8000
 
-# Command to run the application using Gunicorn
-CMD ["gunicorn", "--bind", "0.0.0.0:8000", "--workers", "4", "run:app"]
+# Command to run the application
+CMD ["gunicorn", "--bind", "0.0.0.0:8000", "--workers", "1", "--threads", "4", "--timeout", "120", "run:app"]
