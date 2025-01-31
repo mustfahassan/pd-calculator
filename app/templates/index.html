@@ -3,158 +3,69 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Professional PD Measurement</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
-    <style>
-        body {
-            background-color: #f8f9fa;
-        }
-        .video-container {
-            position: relative;
-            width: 640px;
-            height: 480px;
-            margin: 0 auto;
-            border-radius: 10px;
-            overflow: hidden;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            background-color: #000;
-        }
-        .countdown-overlay {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.7);
-            display: none;
-            justify-content: center;
-            align-items: center;
-            color: white;
-            font-size: 72px;
-            font-weight: bold;
-            z-index: 10;
-        }
-        .status-overlay {
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 100%;
-            padding: 10px;
-            background: rgba(0, 0, 0, 0.7);
-            color: white;
-            text-align: center;
-            z-index: 5;
-        }
-        .result-card {
-            background: white;
-            border-radius: 10px;
-            padding: 20px;
-            margin-top: 20px;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-        }
-        .instruction-card {
-            background: #e9ecef;
-            border-radius: 10px;
-            padding: 15px;
-            margin-bottom: 20px;
-        }
-        .btn-measure {
-            background: #28a745;
-            color: white;
-            padding: 12px 24px;
-            border-radius: 25px;
-            font-weight: 600;
-            transition: all 0.3s;
-        }
-        .btn-measure:hover {
-            background: #218838;
-            transform: translateY(-2px);
-        }
-        .measurement-value {
-            font-size: 24px;
-            font-weight: bold;
-            color: #28a745;
-        }
-        #videoFeed {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            display: none;
-        }
-        .progress-bar {
-            height: 4px;
-            background-color: #28a745;
-            width: 0%;
-            transition: width 0.3s ease;
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            z-index: 6;
-        }
-    </style>
+    <title>PD Measurement</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
 </head>
 <body>
-    <div class="container py-5">
-        <div class="row justify-content-center">
-            <div class="col-lg-8">
-                <h1 class="text-center mb-4">Professional PD Measurement</h1>
+    <div class="container">
+        <h1>PD Measurement</h1>
+        
+        <div class="instructions-card">
+            <h5 class="instructions-title">
+                <span class="icon">ℹ️</span>
+                Instructions
+            </h5>
+            <ol>
+                <li>Click "Start Measurement" to begin</li>
+                <li>Position your face within the guide oval</li>
+                <li>Look straight at the camera</li>
+                <li>Keep your head level and still</li>
+                <li>Hold still during the countdown</li>
+            </ol>
+        </div>
+
+        <div class="video-container">
+            <img id="videoFeed" src="{{ url_for('pupil.video_feed') }}" alt="Video feed">
+            <div class="progress-bar" id="stabilityProgress"></div>
+            <div class="status-overlay" id="statusMessage">Position your face within the guide...</div>
+            <div class="countdown-overlay" id="countdownOverlay">
+                <span id="countdown">3</span>
+            </div>
+        </div>
+
+        <div class="controls">
+            <button class="start-btn" id="measureBtn">
+                📷 Start Measurement
+            </button>
+            <button class="stop-btn" id="stopBtn" style="display: none;">
+                ⏹️ Stop
+            </button>
+        </div>
+
+        <div class="results-card" id="resultsCard">
+            <div class="results-header">
+                ✓ Measurement Complete
+            </div>
+            
+            <div class="results-grid">
+                <div class="result-box">
+                    <div class="result-title">
+                        👁️ Pupillary Distance
+                    </div>
+                    <div class="measurement-value" id="pdValue">-- mm</div>
+                </div>
                 
-                <div class="instruction-card mb-4">
-                    <h5 class="mb-3"><i class="fas fa-info-circle me-2"></i>Instructions</h5>
-                    <ol>
-                        <li>Click "Start Measurement" to begin</li>
-                        <li>Position your face within the guide oval</li>
-                        <li>Look straight at the camera</li>
-                        <li>Keep your head level and still</li>
-                        <li>Hold still during the countdown</li>
-                    </ol>
-                </div>
-
-                <div class="video-container mb-4">
-                    <img id="videoFeed" src="{{ url_for('pupil.video_feed') }}" alt="Video feed">
-                    <div class="progress-bar" id="stabilityProgress"></div>
-                    <div class="status-overlay" id="statusMessage" style="display: none;">Click Start Measurement to begin</div>
-                    <div id="countdownOverlay" class="countdown-overlay">
-                        <span id="countdown">3</span>
+                <div class="result-box">
+                    <div class="result-title">
+                        ⚡ Measurement Quality
                     </div>
-                </div>
-
-                <div class="d-flex justify-content-center gap-3 mb-4">
-                    <button id="measureBtn" class="btn btn-measure">
-                        <i class="fas fa-camera me-2"></i>Start Measurement
-                    </button>
-                    <button id="stopBtn" class="btn btn-danger rounded-pill px-4" style="display: none;">
-                        <i class="fas fa-stop me-2"></i>Stop
-                    </button>
-                </div>
-
-                <div class="result-card" style="display: none;" id="resultsCard">
-                    <h4 class="mb-3 text-center">Measurement Results</h4>
-                    <div class="row text-center">
-                        <div class="col-md-6 mb-3">
-                            <div class="card bg-light">
-                                <div class="card-body">
-                                    <h5 class="card-title">Pupillary Distance</h5>
-                                    <p id="pdValue" class="measurement-value">-- mm</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-6 mb-3">
-                            <div class="card bg-light">
-                                <div class="card-body">
-                                    <h5 class="card-title">Measurement Quality</h5>
-                                    <p id="confidenceValue" class="measurement-value">--%</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                    <div class="measurement-value success" id="confidenceValue">--%</div>
+                    <div class="confidence">Confidence Score</div>
                 </div>
             </div>
         </div>
     </div>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
     <script>
         const measureBtn = document.getElementById('measureBtn');
         const stopBtn = document.getElementById('stopBtn');
@@ -171,22 +82,15 @@
 
         async function startMeasurement() {
             try {
-                // Start camera
                 await fetch('/start_camera', { method: 'POST' });
-                
-                // Show video feed and stop button
                 videoFeed.style.display = 'block';
                 stopBtn.style.display = 'block';
                 measureBtn.style.display = 'none';
-                
-                // Reload video feed source to trigger new stream
                 videoFeed.src = "{{ url_for('pupil.video_feed') }}?" + new Date().getTime();
-                
-                // Start polling status
                 statusInterval = setInterval(checkStatus, 100);
-                
             } catch (error) {
                 console.error('Error starting measurement:', error);
+                statusMessage.textContent = "Error starting camera. Please try again.";
             }
         }
 
@@ -195,19 +99,14 @@
                 const response = await fetch('/get_status');
                 const data = await response.json();
                 
-                // Update progress bar
                 const progressPercent = (data.stable_frames / data.threshold) * 100;
                 stabilityProgress.style.width = `${progressPercent}%`;
-                
-                // Update status message
                 statusMessage.textContent = data.message;
                 
-                // If measuring is complete, start countdown
                 if (data.is_measuring) {
                     clearInterval(statusInterval);
                     await startCountdown();
                 }
-                
             } catch (error) {
                 console.error('Error checking status:', error);
             }
@@ -234,60 +133,45 @@
 
         async function getMeasurement() {
             try {
-                console.log("Getting measurement..."); // Debug log
                 const response = await fetch('/get_measurement');
                 const data = await response.json();
-                console.log("Measurement data:", data); // Debug log
 
                 if (data.pd_mm) {
-                    // Update PD value
                     pdValue.textContent = `${Math.round(data.pd_mm)} mm`;
-
-                    // Update confidence value
-                    const qualityScore = Math.round(data.confidence); // Ensure it's rounded
+                    const qualityScore = Math.round(data.confidence);
                     confidenceValue.textContent = `${qualityScore}%`;
 
-                    // Add color coding for quality
+                    confidenceValue.className = 'measurement-value';
                     if (qualityScore >= 90) {
-                        confidenceValue.style.color = '#28a745'; // Green for excellent
+                        confidenceValue.classList.add('success');
                     } else if (qualityScore >= 75) {
-                        confidenceValue.style.color = '#17a2b8'; // Blue for good
+                        confidenceValue.classList.add('good');
                     } else {
-                        confidenceValue.style.color = '#dc3545'; // Red for needs improvement
+                        confidenceValue.classList.add('warning');
                     }
 
-                    // Show results card
                     resultsCard.style.display = 'block';
 
-                    // Stop camera feed and update UI
-                    try {
-                        await fetch('/stop', { method: 'POST' });
-                        videoFeed.style.display = 'none';
-                        stopBtn.style.display = 'none';
-                        measureBtn.textContent = 'Measure Again';
-                        measureBtn.style.display = 'block';
-                        stabilityProgress.style.width = '0%';
-                    } catch (error) {
-                        console.error('Error stopping camera:', error);
-                    }
+                    await fetch('/stop', { method: 'POST' });
+                    videoFeed.style.display = 'none';
+                    stopBtn.style.display = 'none';
+                    measureBtn.textContent = '📷 Measure Again';
+                    measureBtn.style.display = 'block';
+                    stabilityProgress.style.width = '0%';
                 } else {
-                    console.log("No measurement data received"); // Debug log
-                    // Handle no measurement case
-                    pdValue.textContent = "-- mm";
-                    confidenceValue.textContent = "--%";
-                    resultsCard.style.display = 'block';
-                    
-                    // Show error message
-                    const errorMessage = data.message || "Measurement failed. Please try again.";
-                    statusMessage.textContent = errorMessage;
-                    statusMessage.style.display = 'block';
+                    handleMeasurementError("Measurement failed. Please try again.");
                 }
             } catch (error) {
                 console.error('Error getting measurement:', error);
-                // Show error to user
-                statusMessage.textContent = "Error getting measurement. Please try again.";
-                statusMessage.style.display = 'block';
+                handleMeasurementError("Error getting measurement. Please try again.");
             }
+        }
+
+        function handleMeasurementError(message) {
+            pdValue.textContent = "-- mm";
+            confidenceValue.textContent = "--%";
+            statusMessage.textContent = message;
+            statusMessage.style.display = 'block';
         }
 
         measureBtn.addEventListener('click', async () => {
@@ -300,13 +184,11 @@
                 clearInterval(statusInterval);
                 await fetch('/stop', { method: 'POST' });
                 
-                // Reset UI
                 videoFeed.style.display = 'none';
                 stopBtn.style.display = 'none';
                 measureBtn.style.display = 'block';
                 stabilityProgress.style.width = '0%';
                 statusMessage.style.display = 'none';
-                
             } catch (error) {
                 console.error('Stop error:', error);
             }

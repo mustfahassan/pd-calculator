@@ -157,41 +157,52 @@ class WebcamHandler:
             return False
             
     def initialize_camera(self):
-        """Initialize or reinitialize the camera with enhanced error handling"""
+        """Initialize camera with macOS/Docker support"""
         if self.cap is not None:
             self.cap.release()
             self.cap = None
             
         try:
-            # List of camera indices to try
-            camera_indices = [
-                self.camera_id,      # User specified index
-                0,                   # Default camera
-                1                    # Alternative camera
+            # Try different capture methods for macOS
+            capture_methods = [
+                (0, cv2.CAP_AVFOUNDATION),  # macOS AVFoundation
+                (1, cv2.CAP_AVFOUNDATION),  # Alternative camera index
+                "avfoundation://",          # GStreamer AVFoundation
+                (0, cv2.CAP_ANY),           # Any available method
+                "autovideosrc ! video/x-raw,width=640,height=480 ! videoconvert ! appsink",  # GStreamer auto
             ]
             
-            # Try each camera index
-            for idx in camera_indices:
-                if self._try_camera_init(idx):
-                    # Configure camera settings
-                    self.cap.set(cv2.CAP_PROP_FRAME_WIDTH, self.width)
-                    self.cap.set(cv2.CAP_PROP_FRAME_HEIGHT, self.height)
-                    
-                    # For macOS, add a small delay after initialization
-                    if self.is_macos:
-                        time.sleep(0.5)
-                    
-                    # Verify camera works
-                    ret, frame = self.cap.read()
-                    if ret and frame is not None:
-                        self.is_initialized = True
-                        print(f"Successfully initialized camera with index {idx}")
-                        return
+            for method in capture_methods:
+                try:
+                    if isinstance(method, tuple):
+                        self.cap = cv2.VideoCapture(method[0], method[1])
+                    else:
+                        self.cap = cv2.VideoCapture(method)
                         
-            # If we get here, no camera worked
-            raise RuntimeError("Could not initialize camera with any available index")
+                    if self.cap is not None and self.cap.isOpened():
+                        # Configure camera
+                        self.cap.set(cv2.CAP_PROP_FRAME_WIDTH, self.width)
+                        self.cap.set(cv2.CAP_PROP_FRAME_HEIGHT, self.height)
+                        
+                        # Test read
+                        ret, frame = self.cap.read()
+                        if ret and frame is not None:
+                            print(f"Successfully initialized camera with method: {method}")
+                            self.is_initialized = True
+                            return
+                        else:
+                            self.cap.release()
+                            
+                except Exception as e:
+                    print(f"Failed to initialize with method {method}: {e}")
+                    if self.cap:
+                        self.cap.release()
+                        self.cap = None
+                        
+            raise RuntimeError("Could not initialize camera with any available method")
             
         except Exception as e:
+            print(f"Camera initialization error: {str(e)}")
             self.is_initialized = False
             if self.cap:
                 self.cap.release()

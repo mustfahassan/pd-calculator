@@ -1,4 +1,3 @@
-# Use Python 3.9 slim image
 FROM python:3.9-slim
 
 # Install system dependencies
@@ -12,32 +11,38 @@ RUN apt-get update && apt-get install -y \
     libavcodec-extra \
     libavformat-dev \
     libswscale-dev \
-    x11-utils \
+    libgstreamer1.0-0 \
+    gstreamer1.0-tools \
+    gstreamer1.0-plugins-base \
+    gstreamer1.0-plugins-good \
+    gstreamer1.0-plugins-bad \
+    gstreamer1.0-libav \
     && rm -rf /var/lib/apt/lists/*
 
 # Set environment variables
 ENV PYTHONDONTWRITEBYTECODE=1
 ENV PYTHONUNBUFFERED=1
-ENV QT_X11_NO_MITSHM=1
+ENV OPENCV_FFMPEG_CAPTURE_OPTIONS="protocol_whitelist;file,rtp,udp"
 ENV FLASK_APP=run.py
 ENV FLASK_ENV=production
+ENV GST_DEBUG=3
+ENV OPENCV_LOG_LEVEL=DEBUG
 
-# Set the working directory
 WORKDIR /app
 
-# Install Python dependencies
 COPY requirements.txt .
-RUN pip install --no-cache-dir --default-timeout=1000 -r requirements.txt
 
-# Copy the application code
+# Install Python dependencies
+RUN pip install --no-cache-dir opencv-python-headless==4.8.1.78 && \
+    pip install --no-cache-dir -r requirements.txt
+
 COPY . .
 
-# Create a non-root user and switch to it
-RUN useradd -m appuser && chown -R appuser:appuser /app
+# Create a non-root user
+RUN useradd -m appuser && \
+    chown -R appuser:appuser /app
 USER appuser
 
-# Expose the port
 EXPOSE 8000
 
-# Command to run the application
 CMD ["gunicorn", "--bind", "0.0.0.0:8000", "--workers", "1", "--threads", "4", "--timeout", "120", "run:app"]
