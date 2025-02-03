@@ -19,7 +19,7 @@ camera_started = False
 stable_frame_count = 0
 last_measurement = None
 alignment_status = {"aligned": False, "message": "Look at the camera"}
-STABILITY_THRESHOLD = 45
+STABILITY_THRESHOLD = 30
 MEASUREMENT_FRAMES = 10
 measurement_buffer = []
 

@@ -16,6 +16,7 @@
                 Instructions
             </h5>
             <ol>
+                <li>Allow camera access when prompted</li>
                 <li>Click "Start Measurement" to begin</li>
                 <li>Position your face within the guide oval</li>
                 <li>Look straight at the camera</li>
@@ -25,10 +26,11 @@
         </div>
 
         <div class="video-container">
-            <img id="videoFeed" src="{{ url_for('pupil.video_feed') }}" alt="Video feed">
+            <!-- Note: removed initial video feed source -->
+            <img id="videoFeed" style="display: none;" alt="Video feed">
             <div class="progress-bar" id="stabilityProgress"></div>
-            <div class="status-overlay" id="statusMessage">Position your face within the guide...</div>
-            <div class="countdown-overlay" id="countdownOverlay">
+            <div class="status-overlay" id="statusMessage">Click Start Measurement to begin</div>
+            <div class="countdown-overlay" id="countdownOverlay" style="display: none;">
                 <span id="countdown">3</span>
             </div>
         </div>
@@ -42,7 +44,7 @@
             </button>
         </div>
 
-        <div class="results-card" id="resultsCard">
+        <div class="results-card" id="resultsCard" style="display: none;">
             <div class="results-header">
                 ✓ Measurement Complete
             </div>
@@ -79,14 +81,52 @@
         const resultsCard = document.getElementById('resultsCard');
 
         let statusInterval;
+        let mediaStream = null;
+
+        async function requestCameraPermission() {
+            try {
+                // Request camera access first
+                mediaStream = await navigator.mediaDevices.getUserMedia({ 
+                    video: {
+                        facingMode: "user",
+                        width: { ideal: 1280 },
+                        height: { ideal: 720 }
+                    } 
+                });
+                
+                // If we got here, permission was granted
+                return true;
+            } catch (error) {
+                console.error('Camera permission error:', error);
+                statusMessage.textContent = "Camera access denied. Please allow camera access and try again.";
+                return false;
+            }
+        }
 
         async function startMeasurement() {
             try {
-                await fetch('/start_camera', { method: 'POST' });
+                // First request camera permission explicitly
+                const hasPermission = await requestCameraPermission();
+                if (!hasPermission) {
+                    statusMessage.textContent = "Camera permission is required. Please allow access and try again.";
+                    return;
+                }
+
+                // Stop the media stream we used for permission
+                if (mediaStream) {
+                    mediaStream.getTracks().forEach(track => track.stop());
+                }
+
+                // Now start the Flask camera feed
+                const response = await fetch('/start_camera', { method: 'POST' });
+                if (!response.ok) {
+                    throw new Error('Failed to start camera');
+                }
+
+                videoFeed.src = "{{ url_for('pupil.video_feed') }}?" + new Date().getTime();
                 videoFeed.style.display = 'block';
                 stopBtn.style.display = 'block';
                 measureBtn.style.display = 'none';
-                videoFeed.src = "{{ url_for('pupil.video_feed') }}?" + new Date().getTime();
                 statusInterval = setInterval(checkStatus, 100);
             } catch (error) {
                 console.error('Error starting measurement:', error);
@@ -152,18 +192,34 @@
 
                     resultsCard.style.display = 'block';
 
-                    await fetch('/stop', { method: 'POST' });
-                    videoFeed.style.display = 'none';
-                    stopBtn.style.display = 'none';
+                    await stopMeasurement();
                     measureBtn.textContent = '📷 Measure Again';
                     measureBtn.style.display = 'block';
-                    stabilityProgress.style.width = '0%';
                 } else {
                     handleMeasurementError("Measurement failed. Please try again.");
                 }
             } catch (error) {
                 console.error('Error getting measurement:', error);
                 handleMeasurementError("Error getting measurement. Please try again.");
+            }
+        }
+
+        async function stopMeasurement() {
+            try {
+                clearInterval(statusInterval);
+                await fetch('/stop', { method: 'POST' });
+                
+                videoFeed.style.display = 'none';
+                stopBtn.style.display = 'none';
+                measureBtn.style.display = 'block';
+                stabilityProgress.style.width = '0%';
+                
+                if (mediaStream) {
+                    mediaStream.getTracks().forEach(track => track.stop());
+                    mediaStream = null;
+                }
+            } catch (error) {
+                console.error('Stop error:', error);
             }
         }
 
@@ -174,25 +230,8 @@
             statusMessage.style.display = 'block';
         }
 
-        measureBtn.addEventListener('click', async () => {
-            resultsCard.style.display = 'none';
-            await startMeasurement();
-        });
-
-        stopBtn.addEventListener('click', async () => {
-            try {
-                clearInterval(statusInterval);
-                await fetch('/stop', { method: 'POST' });
-                
-                videoFeed.style.display = 'none';
-                stopBtn.style.display = 'none';
-                measureBtn.style.display = 'block';
-                stabilityProgress.style.width = '0%';
-                statusMessage.style.display = 'none';
-            } catch (error) {
-                console.error('Stop error:', error);
-            }
-        });
+        measureBtn.addEventListener('click', startMeasurement);
+        stopBtn.addEventListener('click', stopMeasurement);
     </script>
 </body>
 </html>

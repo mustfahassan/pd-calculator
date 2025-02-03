@@ -13,10 +13,6 @@ def create_app():
     # Enable debug mode based on environment
     app.config['DEBUG'] = os.environ.get('FLASK_ENV') == 'development'
     
-    # Print debug info
-    print(f"Current working directory: {os.getcwd()}")
-    print(f"Template folder: {app.template_folder}")
-    print(f"Static folder: {app.static_folder}")
     
     # Register blueprint
     from app.routes import pupil_bp
