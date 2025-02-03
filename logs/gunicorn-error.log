@@ -1,0 +1,975 @@
+[2025-02-03 17:01:34 +0500] [3455] [INFO] Starting gunicorn 21.2.0
+[2025-02-03 17:01:34 +0500] [3455] [INFO] Listening at: http://0.0.0.0:8000 (3455)
+[2025-02-03 17:01:34 +0500] [3455] [INFO] Using worker: sync
+[2025-02-03 17:01:34 +0500] [3456] [INFO] Booting worker with pid: 3456
+[2025-02-03 17:01:34 +0500] [3457] [INFO] Booting worker with pid: 3457
+[2025-02-03 17:01:34 +0500] [3458] [INFO] Booting worker with pid: 3458
+[2025-02-03 17:01:34 +0500] [3459] [INFO] Booting worker with pid: 3459
+[2025-02-03 17:01:34 +0500] [3460] [INFO] Booting worker with pid: 3460
+[2025-02-03 17:01:34 +0500] [3461] [INFO] Booting worker with pid: 3461
+[2025-02-03 17:01:34 +0500] [3462] [INFO] Booting worker with pid: 3462
+[2025-02-03 17:01:34 +0500] [3463] [INFO] Booting worker with pid: 3463
+[2025-02-03 17:01:34 +0500] [3467] [INFO] Booting worker with pid: 3467
+[2025-02-03 17:01:34 +0500] [3468] [INFO] Booting worker with pid: 3468
+[2025-02-03 17:01:34 +0500] [3469] [INFO] Booting worker with pid: 3469
+[2025-02-03 17:01:34 +0500] [3470] [INFO] Booting worker with pid: 3470
+[2025-02-03 17:01:34 +0500] [3471] [INFO] Booting worker with pid: 3471
+[2025-02-03 17:01:34 +0500] [3472] [INFO] Booting worker with pid: 3472
+[2025-02-03 17:01:34 +0500] [3473] [INFO] Booting worker with pid: 3473
+[2025-02-03 17:01:34 +0500] [3474] [INFO] Booting worker with pid: 3474
+[2025-02-03 17:01:34 +0500] [3476] [INFO] Booting worker with pid: 3476
+[2025-02-03 17:02:05 +0500] [3455] [CRITICAL] WORKER TIMEOUT (pid:3456)
+[2025-02-03 17:02:05 +0500] [3455] [CRITICAL] WORKER TIMEOUT (pid:3457)
+[2025-02-03 17:02:05 +0500] [3455] [CRITICAL] WORKER TIMEOUT (pid:3458)
+[2025-02-03 17:02:05 +0500] [3455] [CRITICAL] WORKER TIMEOUT (pid:3459)
+[2025-02-03 17:02:05 +0500] [3455] [CRITICAL] WORKER TIMEOUT (pid:3460)
+[2025-02-03 17:02:05 +0500] [3455] [CRITICAL] WORKER TIMEOUT (pid:3461)
+[2025-02-03 17:02:05 +0500] [3455] [CRITICAL] WORKER TIMEOUT (pid:3462)
+[2025-02-03 17:02:05 +0500] [3455] [CRITICAL] WORKER TIMEOUT (pid:3463)
+[2025-02-03 17:02:05 +0500] [3455] [CRITICAL] WORKER TIMEOUT (pid:3467)
+[2025-02-03 17:02:05 +0500] [3455] [CRITICAL] WORKER TIMEOUT (pid:3468)
+[2025-02-03 17:02:05 +0500] [3455] [CRITICAL] WORKER TIMEOUT (pid:3469)
+[2025-02-03 17:02:05 +0500] [3455] [CRITICAL] WORKER TIMEOUT (pid:3470)
+[2025-02-03 17:02:05 +0500] [3455] [CRITICAL] WORKER TIMEOUT (pid:3471)
+[2025-02-03 17:02:05 +0500] [3455] [CRITICAL] WORKER TIMEOUT (pid:3472)
+[2025-02-03 17:02:05 +0500] [3455] [CRITICAL] WORKER TIMEOUT (pid:3473)
+[2025-02-03 17:02:05 +0500] [3455] [CRITICAL] WORKER TIMEOUT (pid:3474)
+[2025-02-03 17:02:05 +0500] [3455] [CRITICAL] WORKER TIMEOUT (pid:3476)
+[2025-02-03 17:02:05 +0500] [3458] [INFO] Worker exiting (pid: 3458)
+[2025-02-03 17:02:05 +0500] [3457] [INFO] Worker exiting (pid: 3457)
+[2025-02-03 17:02:05 +0500] [3469] [INFO] Worker exiting (pid: 3469)
+[2025-02-03 17:02:05 +0500] [3474] [INFO] Worker exiting (pid: 3474)
+[2025-02-03 17:02:05 +0500] [3476] [INFO] Worker exiting (pid: 3476)
+[2025-02-03 17:02:05 +0500] [3461] [INFO] Worker exiting (pid: 3461)
+[2025-02-03 17:02:05 +0500] [3471] [INFO] Worker exiting (pid: 3471)
+[2025-02-03 17:02:05 +0500] [3462] [INFO] Worker exiting (pid: 3462)
+[2025-02-03 17:02:05 +0500] [3459] [INFO] Worker exiting (pid: 3459)
+[2025-02-03 17:02:05 +0500] [3470] [INFO] Worker exiting (pid: 3470)
+[2025-02-03 17:02:05 +0500] [3468] [INFO] Worker exiting (pid: 3468)
+[2025-02-03 17:02:05 +0500] [3467] [INFO] Worker exiting (pid: 3467)
+[2025-02-03 17:02:05 +0500] [3472] [INFO] Worker exiting (pid: 3472)
+[2025-02-03 17:02:05 +0500] [3463] [INFO] Worker exiting (pid: 3463)
+[2025-02-03 17:02:05 +0500] [3456] [INFO] Worker exiting (pid: 3456)
+[2025-02-03 17:02:05 +0500] [3473] [INFO] Worker exiting (pid: 3473)
+[2025-02-03 17:02:06 +0500] [3455] [ERROR] Worker (pid:3461) was sent SIGKILL! Perhaps out of memory?
+[2025-02-03 17:02:06 +0500] [3455] [ERROR] Worker (pid:3471) was sent SIGKILL! Perhaps out of memory?
+[2025-02-03 17:02:06 +0500] [3455] [ERROR] Worker (pid:3476) was sent SIGKILL! Perhaps out of memory?
+[2025-02-03 17:02:06 +0500] [3455] [ERROR] Worker (pid:3474) was sent SIGKILL! Perhaps out of memory?
+[2025-02-03 17:02:06 +0500] [3455] [ERROR] Worker (pid:3470) was sent SIGKILL! Perhaps out of memory?
+[2025-02-03 17:02:06 +0500] [3570] [INFO] Booting worker with pid: 3570
+[2025-02-03 17:02:06 +0500] [3455] [ERROR] Worker (pid:3467) was sent SIGKILL! Perhaps out of memory?
+[2025-02-03 17:02:06 +0500] [3455] [ERROR] Worker (pid:3472) was sent SIGKILL! Perhaps out of memory?
+[2025-02-03 17:02:06 +0500] [3455] [ERROR] Worker (pid:3468) was sent SIGKILL! Perhaps out of memory?
+[2025-02-03 17:02:06 +0500] [3455] [ERROR] Worker (pid:3458) was sent SIGKILL! Perhaps out of memory?
+[2025-02-03 17:02:06 +0500] [3455] [ERROR] Worker (pid:3473) was sent SIGKILL! Perhaps out of memory?
+[2025-02-03 17:02:06 +0500] [3455] [ERROR] Worker (pid:3460) was sent SIGKILL! Perhaps out of memory?
+[2025-02-03 17:02:06 +0500] [3455] [ERROR] Worker (pid:3459) was sent SIGKILL! Perhaps out of memory?
+[2025-02-03 17:02:06 +0500] [3571] [INFO] Booting worker with pid: 3571
+[2025-02-03 17:02:06 +0500] [3455] [ERROR] Worker (pid:3456) was sent SIGKILL! Perhaps out of memory?
+[2025-02-03 17:02:06 +0500] [3455] [ERROR] Worker (pid:3463) was sent SIGKILL! Perhaps out of memory?
+[2025-02-03 17:02:06 +0500] [3455] [ERROR] Worker (pid:3457) was sent SIGKILL! Perhaps out of memory?
+[2025-02-03 17:02:06 +0500] [3455] [ERROR] Worker (pid:3462) was sent SIGKILL! Perhaps out of memory?
+[2025-02-03 17:02:06 +0500] [3455] [ERROR] Worker (pid:3469) was sent SIGKILL! Perhaps out of memory?
+[2025-02-03 17:02:06 +0500] [3572] [INFO] Booting worker with pid: 3572
+[2025-02-03 17:02:06 +0500] [3573] [INFO] Booting worker with pid: 3573
+[2025-02-03 17:02:06 +0500] [3574] [INFO] Booting worker with pid: 3574
+[2025-02-03 17:02:06 +0500] [3575] [INFO] Booting worker with pid: 3575
+[2025-02-03 17:02:06 +0500] [3576] [INFO] Booting worker with pid: 3576
+[2025-02-03 17:02:06 +0500] [3577] [INFO] Booting worker with pid: 3577
+[2025-02-03 17:02:06 +0500] [3582] [INFO] Booting worker with pid: 3582
+[2025-02-03 17:02:06 +0500] [3583] [INFO] Booting worker with pid: 3583
+[2025-02-03 17:02:06 +0500] [3584] [INFO] Booting worker with pid: 3584
+[2025-02-03 17:02:06 +0500] [3585] [INFO] Booting worker with pid: 3585
+[2025-02-03 17:02:06 +0500] [3586] [INFO] Booting worker with pid: 3586
+[2025-02-03 17:02:06 +0500] [3587] [INFO] Booting worker with pid: 3587
+[2025-02-03 17:02:06 +0500] [3588] [INFO] Booting worker with pid: 3588
+[2025-02-03 17:02:06 +0500] [3589] [INFO] Booting worker with pid: 3589
+[2025-02-03 17:02:07 +0500] [3590] [INFO] Booting worker with pid: 3590
+[2025-02-03 17:02:37 +0500] [3455] [CRITICAL] WORKER TIMEOUT (pid:3570)
+[2025-02-03 17:02:37 +0500] [3455] [CRITICAL] WORKER TIMEOUT (pid:3571)
+[2025-02-03 17:02:37 +0500] [3455] [CRITICAL] WORKER TIMEOUT (pid:3572)
+[2025-02-03 17:02:37 +0500] [3455] [CRITICAL] WORKER TIMEOUT (pid:3573)
+[2025-02-03 17:02:37 +0500] [3455] [CRITICAL] WORKER TIMEOUT (pid:3574)
+[2025-02-03 17:02:37 +0500] [3455] [CRITICAL] WORKER TIMEOUT (pid:3575)
+[2025-02-03 17:02:37 +0500] [3455] [CRITICAL] WORKER TIMEOUT (pid:3576)
+[2025-02-03 17:02:37 +0500] [3455] [CRITICAL] WORKER TIMEOUT (pid:3577)
+[2025-02-03 17:02:37 +0500] [3455] [CRITICAL] WORKER TIMEOUT (pid:3582)
+[2025-02-03 17:02:37 +0500] [3455] [CRITICAL] WORKER TIMEOUT (pid:3583)
+[2025-02-03 17:02:37 +0500] [3455] [CRITICAL] WORKER TIMEOUT (pid:3584)
+[2025-02-03 17:02:37 +0500] [3455] [CRITICAL] WORKER TIMEOUT (pid:3585)
+[2025-02-03 17:02:37 +0500] [3455] [CRITICAL] WORKER TIMEOUT (pid:3586)
+[2025-02-03 17:02:37 +0500] [3455] [CRITICAL] WORKER TIMEOUT (pid:3587)
+[2025-02-03 17:02:37 +0500] [3455] [CRITICAL] WORKER TIMEOUT (pid:3588)
+[2025-02-03 17:02:37 +0500] [3455] [CRITICAL] WORKER TIMEOUT (pid:3589)
+[2025-02-03 17:02:37 +0500] [3455] [CRITICAL] WORKER TIMEOUT (pid:3590)
+[2025-02-03 17:02:37 +0500] [3573] [INFO] Worker exiting (pid: 3573)
+[2025-02-03 17:02:37 +0500] [3570] [INFO] Worker exiting (pid: 3570)
+[2025-02-03 17:02:37 +0500] [3583] [INFO] Worker exiting (pid: 3583)
+[2025-02-03 17:02:37 +0500] [3584] [INFO] Worker exiting (pid: 3584)
+[2025-02-03 17:02:37 +0500] [3588] [INFO] Worker exiting (pid: 3588)
+[2025-02-03 17:02:37 +0500] [3586] [INFO] Worker exiting (pid: 3586)
+[2025-02-03 17:02:37 +0500] [3589] [INFO] Worker exiting (pid: 3589)
+[2025-02-03 17:02:37 +0500] [3572] [INFO] Worker exiting (pid: 3572)
+[2025-02-03 17:02:37 +0500] [3590] [INFO] Worker exiting (pid: 3590)
+[2025-02-03 17:02:37 +0500] [3587] [INFO] Worker exiting (pid: 3587)
+[2025-02-03 17:02:37 +0500] [3575] [INFO] Worker exiting (pid: 3575)
+[2025-02-03 17:02:37 +0500] [3577] [INFO] Worker exiting (pid: 3577)
+[2025-02-03 17:02:37 +0500] [3585] [INFO] Worker exiting (pid: 3585)
+[2025-02-03 17:02:37 +0500] [3574] [INFO] Worker exiting (pid: 3574)
+[2025-02-03 17:02:37 +0500] [3571] [INFO] Worker exiting (pid: 3571)
+[2025-02-03 17:02:37 +0500] [3582] [INFO] Worker exiting (pid: 3582)
+[2025-02-03 17:02:37 +0500] [3576] [INFO] Worker exiting (pid: 3576)
+[2025-02-03 17:02:38 +0500] [3455] [ERROR] Worker (pid:3588) was sent SIGKILL! Perhaps out of memory?
+[2025-02-03 17:02:38 +0500] [3455] [ERROR] Worker (pid:3584) was sent SIGKILL! Perhaps out of memory?
+[2025-02-03 17:02:38 +0500] [3455] [ERROR] Worker (pid:3590) was sent SIGKILL! Perhaps out of memory?
+[2025-02-03 17:02:38 +0500] [3455] [ERROR] Worker (pid:3577) was sent SIGKILL! Perhaps out of memory?
+[2025-02-03 17:02:38 +0500] [3455] [ERROR] Worker (pid:3576) was sent SIGKILL! Perhaps out of memory?
+[2025-02-03 17:02:38 +0500] [3455] [ERROR] Worker (pid:3585) was sent SIGKILL! Perhaps out of memory?
+[2025-02-03 17:02:38 +0500] [3455] [ERROR] Worker (pid:3575) was sent SIGKILL! Perhaps out of memory?
+[2025-02-03 17:02:38 +0500] [3455] [ERROR] Worker (pid:3574) was sent SIGKILL! Perhaps out of memory?
+[2025-02-03 17:02:38 +0500] [3455] [ERROR] Worker (pid:3573) was sent SIGKILL! Perhaps out of memory?
+[2025-02-03 17:02:38 +0500] [3455] [ERROR] Worker (pid:3572) was sent SIGKILL! Perhaps out of memory?
+[2025-02-03 17:02:38 +0500] [3455] [ERROR] Worker (pid:3571) was sent SIGKILL! Perhaps out of memory?
+[2025-02-03 17:02:38 +0500] [3455] [ERROR] Worker (pid:3589) was sent SIGKILL! Perhaps out of memory?
+[2025-02-03 17:02:38 +0500] [3455] [ERROR] Worker (pid:3570) was sent SIGKILL! Perhaps out of memory?
+[2025-02-03 17:02:38 +0500] [3658] [INFO] Booting worker with pid: 3658
+[2025-02-03 17:02:38 +0500] [3659] [INFO] Booting worker with pid: 3659
+[2025-02-03 17:02:38 +0500] [3660] [INFO] Booting worker with pid: 3660
+[2025-02-03 17:02:38 +0500] [3661] [INFO] Booting worker with pid: 3661
+[2025-02-03 17:02:38 +0500] [3662] [INFO] Booting worker with pid: 3662
+[2025-02-03 17:02:38 +0500] [3663] [INFO] Booting worker with pid: 3663
+[2025-02-03 17:02:38 +0500] [3664] [INFO] Booting worker with pid: 3664
+[2025-02-03 17:02:38 +0500] [3665] [INFO] Booting worker with pid: 3665
+[2025-02-03 17:02:38 +0500] [3667] [INFO] Booting worker with pid: 3667
+[2025-02-03 17:02:38 +0500] [3669] [INFO] Booting worker with pid: 3669
+[2025-02-03 17:02:38 +0500] [3670] [INFO] Booting worker with pid: 3670
+[2025-02-03 17:02:38 +0500] [3671] [INFO] Booting worker with pid: 3671
+[2025-02-03 17:02:38 +0500] [3672] [INFO] Booting worker with pid: 3672
+[2025-02-03 17:02:39 +0500] [3673] [INFO] Booting worker with pid: 3673
+[2025-02-03 17:02:39 +0500] [3674] [INFO] Booting worker with pid: 3674
+[2025-02-03 17:02:39 +0500] [3675] [INFO] Booting worker with pid: 3675
+[2025-02-03 17:02:39 +0500] [3676] [INFO] Booting worker with pid: 3676
+[2025-02-03 17:03:09 +0500] [3455] [CRITICAL] WORKER TIMEOUT (pid:3658)
+[2025-02-03 17:03:09 +0500] [3455] [CRITICAL] WORKER TIMEOUT (pid:3659)
+[2025-02-03 17:03:09 +0500] [3455] [CRITICAL] WORKER TIMEOUT (pid:3660)
+[2025-02-03 17:03:09 +0500] [3455] [CRITICAL] WORKER TIMEOUT (pid:3661)
+[2025-02-03 17:03:09 +0500] [3455] [CRITICAL] WORKER TIMEOUT (pid:3662)
+[2025-02-03 17:03:09 +0500] [3455] [CRITICAL] WORKER TIMEOUT (pid:3663)
+[2025-02-03 17:03:09 +0500] [3455] [CRITICAL] WORKER TIMEOUT (pid:3664)
+[2025-02-03 17:03:09 +0500] [3455] [CRITICAL] WORKER TIMEOUT (pid:3665)
+[2025-02-03 17:03:09 +0500] [3455] [CRITICAL] WORKER TIMEOUT (pid:3667)
+[2025-02-03 17:03:09 +0500] [3455] [CRITICAL] WORKER TIMEOUT (pid:3669)
+[2025-02-03 17:03:09 +0500] [3455] [CRITICAL] WORKER TIMEOUT (pid:3670)
+[2025-02-03 17:03:09 +0500] [3455] [CRITICAL] WORKER TIMEOUT (pid:3671)
+[2025-02-03 17:03:09 +0500] [3659] [INFO] Worker exiting (pid: 3659)
+[2025-02-03 17:03:09 +0500] [3455] [CRITICAL] WORKER TIMEOUT (pid:3672)
+[2025-02-03 17:03:09 +0500] [3455] [CRITICAL] WORKER TIMEOUT (pid:3673)
+[2025-02-03 17:03:09 +0500] [3455] [CRITICAL] WORKER TIMEOUT (pid:3674)
+[2025-02-03 17:03:09 +0500] [3455] [CRITICAL] WORKER TIMEOUT (pid:3675)
+[2025-02-03 17:03:09 +0500] [3455] [CRITICAL] WORKER TIMEOUT (pid:3676)
+[2025-02-03 17:03:09 +0500] [3663] [INFO] Worker exiting (pid: 3663)
+[2025-02-03 17:03:09 +0500] [3664] [INFO] Worker exiting (pid: 3664)
+[2025-02-03 17:03:09 +0500] [3672] [INFO] Worker exiting (pid: 3672)
+[2025-02-03 17:03:09 +0500] [3671] [INFO] Worker exiting (pid: 3671)
+[2025-02-03 17:03:09 +0500] [3676] [INFO] Worker exiting (pid: 3676)
+[2025-02-03 17:03:09 +0500] [3673] [INFO] Worker exiting (pid: 3673)
+[2025-02-03 17:03:09 +0500] [3669] [INFO] Worker exiting (pid: 3669)
+[2025-02-03 17:03:09 +0500] [3670] [INFO] Worker exiting (pid: 3670)
+[2025-02-03 17:03:09 +0500] [3674] [INFO] Worker exiting (pid: 3674)
+[2025-02-03 17:03:09 +0500] [3660] [INFO] Worker exiting (pid: 3660)
+[2025-02-03 17:03:09 +0500] [3658] [INFO] Worker exiting (pid: 3658)
+[2025-02-03 17:03:09 +0500] [3667] [INFO] Worker exiting (pid: 3667)
+[2025-02-03 17:03:09 +0500] [3665] [INFO] Worker exiting (pid: 3665)
+[2025-02-03 17:03:09 +0500] [3675] [INFO] Worker exiting (pid: 3675)
+[2025-02-03 17:03:09 +0500] [3662] [INFO] Worker exiting (pid: 3662)
+[2025-02-03 17:03:09 +0500] [3661] [INFO] Worker exiting (pid: 3661)
+[2025-02-03 17:03:10 +0500] [3455] [ERROR] Worker (pid:3660) was sent SIGKILL! Perhaps out of memory?
+[2025-02-03 17:03:10 +0500] [3749] [INFO] Booting worker with pid: 3749
+[2025-02-03 17:03:10 +0500] [3455] [ERROR] Worker (pid:3673) was sent SIGKILL! Perhaps out of memory?
+[2025-02-03 17:03:10 +0500] [3455] [ERROR] Worker (pid:3669) was sent SIGKILL! Perhaps out of memory?
+[2025-02-03 17:03:10 +0500] [3455] [ERROR] Worker (pid:3667) was sent SIGKILL! Perhaps out of memory?
+[2025-02-03 17:03:10 +0500] [3455] [ERROR] Worker (pid:3672) was sent SIGKILL! Perhaps out of memory?
+[2025-02-03 17:03:10 +0500] [3455] [ERROR] Worker (pid:3675) was sent SIGKILL! Perhaps out of memory?
+[2025-02-03 17:03:10 +0500] [3455] [ERROR] Worker (pid:3661) was sent SIGKILL! Perhaps out of memory?
+[2025-02-03 17:03:10 +0500] [3455] [ERROR] Worker (pid:3662) was sent SIGKILL! Perhaps out of memory?
+[2025-02-03 17:03:10 +0500] [3455] [ERROR] Worker (pid:3665) was sent SIGKILL! Perhaps out of memory?
+[2025-02-03 17:03:10 +0500] [3750] [INFO] Booting worker with pid: 3750
+[2025-02-03 17:03:10 +0500] [3455] [ERROR] Worker (pid:3664) was sent SIGKILL! Perhaps out of memory?
+[2025-02-03 17:03:10 +0500] [3455] [ERROR] Worker (pid:3659) was sent SIGKILL! Perhaps out of memory?
+[2025-02-03 17:03:10 +0500] [3455] [ERROR] Worker (pid:3670) was sent SIGKILL! Perhaps out of memory?
+[2025-02-03 17:03:10 +0500] [3455] [ERROR] Worker (pid:3674) was sent SIGKILL! Perhaps out of memory?
+[2025-02-03 17:03:10 +0500] [3455] [ERROR] Worker (pid:3676) was sent SIGKILL! Perhaps out of memory?
+[2025-02-03 17:03:10 +0500] [3455] [ERROR] Worker (pid:3663) was sent SIGKILL! Perhaps out of memory?
+[2025-02-03 17:03:10 +0500] [3455] [ERROR] Worker (pid:3671) was sent SIGKILL! Perhaps out of memory?
+[2025-02-03 17:03:10 +0500] [3455] [ERROR] Worker (pid:3658) was sent SIGKILL! Perhaps out of memory?
+[2025-02-03 17:03:10 +0500] [3751] [INFO] Booting worker with pid: 3751
+[2025-02-03 17:03:10 +0500] [3752] [INFO] Booting worker with pid: 3752
+[2025-02-03 17:03:10 +0500] [3753] [INFO] Booting worker with pid: 3753
+[2025-02-03 17:03:10 +0500] [3754] [INFO] Booting worker with pid: 3754
+[2025-02-03 17:03:10 +0500] [3755] [INFO] Booting worker with pid: 3755
+[2025-02-03 17:03:10 +0500] [3756] [INFO] Booting worker with pid: 3756
+[2025-02-03 17:03:11 +0500] [3757] [INFO] Booting worker with pid: 3757
+[2025-02-03 17:03:11 +0500] [3758] [INFO] Booting worker with pid: 3758
+[2025-02-03 17:03:11 +0500] [3761] [INFO] Booting worker with pid: 3761
+[2025-02-03 17:03:11 +0500] [3762] [INFO] Booting worker with pid: 3762
+[2025-02-03 17:03:11 +0500] [3763] [INFO] Booting worker with pid: 3763
+[2025-02-03 17:03:11 +0500] [3764] [INFO] Booting worker with pid: 3764
+[2025-02-03 17:03:11 +0500] [3765] [INFO] Booting worker with pid: 3765
+[2025-02-03 17:03:11 +0500] [3766] [INFO] Booting worker with pid: 3766
+[2025-02-03 17:03:11 +0500] [3767] [INFO] Booting worker with pid: 3767
+[2025-02-03 17:03:16 +0500] [3455] [INFO] Handling signal: int
+[2025-02-03 17:03:38 +0500] [3750] [INFO] Worker exiting (pid: 3750)
+[2025-02-03 17:03:38 +0500] [3749] [INFO] Worker exiting (pid: 3749)
+[2025-02-03 17:03:38 +0500] [3751] [INFO] Worker exiting (pid: 3751)
+[2025-02-03 17:03:38 +0500] [3752] [INFO] Worker exiting (pid: 3752)
+[2025-02-03 17:03:39 +0500] [3754] [INFO] Worker exiting (pid: 3754)
+[2025-02-03 17:03:39 +0500] [3753] [INFO] Worker exiting (pid: 3753)
+[2025-02-03 17:03:39 +0500] [3755] [INFO] Worker exiting (pid: 3755)
+[2025-02-03 17:03:40 +0500] [3758] [INFO] Worker exiting (pid: 3758)
+[2025-02-03 17:03:40 +0500] [3766] [INFO] Worker exiting (pid: 3766)
+[2025-02-03 17:03:40 +0500] [3763] [INFO] Worker exiting (pid: 3763)
+[2025-02-03 17:03:40 +0500] [3761] [INFO] Worker exiting (pid: 3761)
+[2025-02-03 17:03:40 +0500] [3762] [INFO] Worker exiting (pid: 3762)
+[2025-02-03 17:03:40 +0500] [3764] [INFO] Worker exiting (pid: 3764)
+[2025-02-03 17:03:40 +0500] [3757] [INFO] Worker exiting (pid: 3757)
+[2025-02-03 17:03:40 +0500] [3756] [INFO] Worker exiting (pid: 3756)
+[2025-02-03 17:03:40 +0500] [3765] [INFO] Worker exiting (pid: 3765)
+[2025-02-03 17:03:40 +0500] [3767] [INFO] Worker exiting (pid: 3767)
+[2025-02-03 17:03:41 +0500] [3455] [INFO] Shutting down: Master
+[2025-02-03 17:03:52 +0500] [3876] [INFO] Starting gunicorn 21.2.0
+[2025-02-03 17:03:52 +0500] [3876] [INFO] Listening at: http://0.0.0.0:8000 (3876)
+[2025-02-03 17:03:52 +0500] [3876] [INFO] Using worker: sync
+[2025-02-03 17:03:52 +0500] [3877] [INFO] Booting worker with pid: 3877
+[2025-02-03 17:03:52 +0500] [3878] [INFO] Booting worker with pid: 3878
+[2025-02-03 17:03:52 +0500] [3879] [INFO] Booting worker with pid: 3879
+[2025-02-03 17:03:52 +0500] [3880] [INFO] Booting worker with pid: 3880
+[2025-02-03 17:03:52 +0500] [3881] [INFO] Booting worker with pid: 3881
+[2025-02-03 17:03:52 +0500] [3882] [INFO] Booting worker with pid: 3882
+[2025-02-03 17:03:52 +0500] [3883] [INFO] Booting worker with pid: 3883
+[2025-02-03 17:03:52 +0500] [3884] [INFO] Booting worker with pid: 3884
+[2025-02-03 17:03:52 +0500] [3885] [INFO] Booting worker with pid: 3885
+[2025-02-03 17:03:52 +0500] [3886] [INFO] Booting worker with pid: 3886
+[2025-02-03 17:03:52 +0500] [3887] [INFO] Booting worker with pid: 3887
+[2025-02-03 17:03:52 +0500] [3889] [INFO] Booting worker with pid: 3889
+[2025-02-03 17:03:52 +0500] [3890] [INFO] Booting worker with pid: 3890
+[2025-02-03 17:03:52 +0500] [3891] [INFO] Booting worker with pid: 3891
+[2025-02-03 17:03:52 +0500] [3892] [INFO] Booting worker with pid: 3892
+[2025-02-03 17:03:52 +0500] [3895] [INFO] Booting worker with pid: 3895
+[2025-02-03 17:03:53 +0500] [3896] [INFO] Booting worker with pid: 3896
+[2025-02-03 17:04:23 +0500] [3876] [CRITICAL] WORKER TIMEOUT (pid:3877)
+[2025-02-03 17:04:23 +0500] [3876] [CRITICAL] WORKER TIMEOUT (pid:3878)
+[2025-02-03 17:04:23 +0500] [3876] [CRITICAL] WORKER TIMEOUT (pid:3879)
+[2025-02-03 17:04:23 +0500] [3876] [CRITICAL] WORKER TIMEOUT (pid:3880)
+[2025-02-03 17:04:23 +0500] [3876] [CRITICAL] WORKER TIMEOUT (pid:3881)
+[2025-02-03 17:04:23 +0500] [3876] [CRITICAL] WORKER TIMEOUT (pid:3882)
+[2025-02-03 17:04:23 +0500] [3876] [CRITICAL] WORKER TIMEOUT (pid:3883)
+[2025-02-03 17:04:23 +0500] [3876] [CRITICAL] WORKER TIMEOUT (pid:3884)
+[2025-02-03 17:04:23 +0500] [3876] [CRITICAL] WORKER TIMEOUT (pid:3885)
+[2025-02-03 17:04:23 +0500] [3876] [CRITICAL] WORKER TIMEOUT (pid:3886)
+[2025-02-03 17:04:23 +0500] [3876] [CRITICAL] WORKER TIMEOUT (pid:3887)
+[2025-02-03 17:04:23 +0500] [3876] [CRITICAL] WORKER TIMEOUT (pid:3889)
+[2025-02-03 17:04:23 +0500] [3876] [CRITICAL] WORKER TIMEOUT (pid:3890)
+[2025-02-03 17:04:23 +0500] [3879] [INFO] Worker exiting (pid: 3879)
+[2025-02-03 17:04:23 +0500] [3876] [CRITICAL] WORKER TIMEOUT (pid:3891)
+[2025-02-03 17:04:23 +0500] [3876] [CRITICAL] WORKER TIMEOUT (pid:3892)
+[2025-02-03 17:04:23 +0500] [3876] [CRITICAL] WORKER TIMEOUT (pid:3895)
+[2025-02-03 17:04:23 +0500] [3876] [CRITICAL] WORKER TIMEOUT (pid:3896)
+[2025-02-03 17:04:23 +0500] [3886] [INFO] Worker exiting (pid: 3886)
+[2025-02-03 17:04:23 +0500] [3896] [INFO] Worker exiting (pid: 3896)
+[2025-02-03 17:04:23 +0500] [3885] [INFO] Worker exiting (pid: 3885)
+[2025-02-03 17:04:23 +0500] [3880] [INFO] Worker exiting (pid: 3880)
+[2025-02-03 17:04:23 +0500] [3883] [INFO] Worker exiting (pid: 3883)
+[2025-02-03 17:04:23 +0500] [3882] [INFO] Worker exiting (pid: 3882)
+[2025-02-03 17:04:23 +0500] [3889] [INFO] Worker exiting (pid: 3889)
+[2025-02-03 17:04:23 +0500] [3890] [INFO] Worker exiting (pid: 3890)
+[2025-02-03 17:04:23 +0500] [3895] [INFO] Worker exiting (pid: 3895)
+[2025-02-03 17:04:23 +0500] [3887] [INFO] Worker exiting (pid: 3887)
+[2025-02-03 17:04:23 +0500] [3891] [INFO] Worker exiting (pid: 3891)
+[2025-02-03 17:04:23 +0500] [3884] [INFO] Worker exiting (pid: 3884)
+[2025-02-03 17:04:23 +0500] [3892] [INFO] Worker exiting (pid: 3892)
+[2025-02-03 17:04:23 +0500] [3881] [INFO] Worker exiting (pid: 3881)
+[2025-02-03 17:04:23 +0500] [3878] [ERROR] Exception in worker process
+Traceback (most recent call last):
+  File "/Users/musharp/eye_distance_flask_app/venv/lib/python3.9/site-packages/gunicorn/arbiter.py", line 609, in spawn_worker
+    worker.init_process()
+  File "/Users/musharp/eye_distance_flask_app/venv/lib/python3.9/site-packages/gunicorn/workers/base.py", line 134, in init_process
+    self.load_wsgi()
+  File "/Users/musharp/eye_distance_flask_app/venv/lib/python3.9/site-packages/gunicorn/workers/base.py", line 146, in load_wsgi
+    self.wsgi = self.app.wsgi()
+  File "/Users/musharp/eye_distance_flask_app/venv/lib/python3.9/site-packages/gunicorn/app/base.py", line 67, in wsgi
+    self.callable = self.load()
+  File "/Users/musharp/eye_distance_flask_app/venv/lib/python3.9/site-packages/gunicorn/app/wsgiapp.py", line 58, in load
+    return self.load_wsgiapp()
+  File "/Users/musharp/eye_distance_flask_app/venv/lib/python3.9/site-packages/gunicorn/app/wsgiapp.py", line 48, in load_wsgiapp
+    return util.import_app(self.app_uri)
+  File "/Users/musharp/eye_distance_flask_app/venv/lib/python3.9/site-packages/gunicorn/util.py", line 371, in import_app
+    mod = importlib.import_module(module)
+  File "/Users/musharp/.pyenv/versions/3.9.13/lib/python3.9/importlib/__init__.py", line 127, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+  File "<frozen importlib._bootstrap>", line 1030, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 1007, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 986, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 680, in _load_unlocked
+  File "<frozen importlib._bootstrap_external>", line 850, in exec_module
+  File "<frozen importlib._bootstrap>", line 228, in _call_with_frames_removed
+  File "/Users/musharp/eye_distance_flask_app/run.py", line 24, in <module>
+    app = create_app()
+  File "/Users/musharp/eye_distance_flask_app/run.py", line 18, in create_app
+    from app.routes import pupil_bp
+  File "/Users/musharp/eye_distance_flask_app/app/__init__.py", line 2, in <module>
+    from .routes import pupil_bp
+  File "/Users/musharp/eye_distance_flask_app/app/routes.py", line 5, in <module>
+    from .measurements import PupilDetector, PupilMeasurement
+  File "/Users/musharp/eye_distance_flask_app/app/measurements.py", line 1, in <module>
+    import mediapipe as mp
+  File "/Users/musharp/eye_distance_flask_app/venv/lib/python3.9/site-packages/mediapipe/__init__.py", line 17, in <module>
+    import mediapipe.tasks.python as tasks
+  File "/Users/musharp/eye_distance_flask_app/venv/lib/python3.9/site-packages/mediapipe/tasks/python/__init__.py", line 17, in <module>
+    from . import audio
+  File "/Users/musharp/eye_distance_flask_app/venv/lib/python3.9/site-packages/mediapipe/tasks/python/audio/__init__.py", line 18, in <module>
+    import mediapipe.tasks.python.audio.audio_classifier
+  File "/Users/musharp/eye_distance_flask_app/venv/lib/python3.9/site-packages/mediapipe/tasks/python/audio/audio_classifier.py", line 26, in <module>
+    from mediapipe.tasks.python.audio.core import base_audio_task_api
+  File "/Users/musharp/eye_distance_flask_app/venv/lib/python3.9/site-packages/mediapipe/tasks/python/audio/core/base_audio_task_api.py", line 25, in <module>
+    from mediapipe.tasks.python.core.optional_dependencies import doc_controls
+  File "/Users/musharp/eye_distance_flask_app/venv/lib/python3.9/site-packages/mediapipe/tasks/python/core/optional_dependencies.py", line 20, in <module>
+    from tensorflow.tools.docs import doc_controls
+  File "/Users/musharp/eye_distance_flask_app/venv/lib/python3.9/site-packages/tensorflow/__init__.py", line 45, in <module>
+    from tensorflow._api.v2 import __internal__
+  File "/Users/musharp/eye_distance_flask_app/venv/lib/python3.9/site-packages/tensorflow/_api/v2/__internal__/__init__.py", line 11, in <module>
+    from tensorflow._api.v2.__internal__ import distribute
+  File "/Users/musharp/eye_distance_flask_app/venv/lib/python3.9/site-packages/tensorflow/_api/v2/__internal__/distribute/__init__.py", line 8, in <module>
+    from tensorflow._api.v2.__internal__.distribute import combinations
+  File "/Users/musharp/eye_distance_flask_app/venv/lib/python3.9/site-packages/tensorflow/_api/v2/__internal__/distribute/combinations/__init__.py", line 8, in <module>
+    from tensorflow.python.distribute.combinations import env # line: 456
+  File "/Users/musharp/eye_distance_flask_app/venv/lib/python3.9/site-packages/tensorflow/python/distribute/combinations.py", line 36, in <module>
+    from tensorflow.python.distribute import multi_worker_test_base
+  File "/Users/musharp/eye_distance_flask_app/venv/lib/python3.9/site-packages/tensorflow/python/distribute/multi_worker_test_base.py", line 33, in <module>
+    from tensorflow.python.distribute import distribute_coordinator as dc
+  File "/Users/musharp/eye_distance_flask_app/venv/lib/python3.9/site-packages/tensorflow/python/distribute/distribute_coordinator.py", line 29, in <module>
+    from tensorflow.python.training import monitored_session
+  File "/Users/musharp/eye_distance_flask_app/venv/lib/python3.9/site-packages/tensorflow/python/training/monitored_session.py", line 22, in <module>
+    from tensorflow.python.checkpoint import checkpoint as trackable_util
+  File "/Users/musharp/eye_distance_flask_app/venv/lib/python3.9/site-packages/tensorflow/python/checkpoint/checkpoint.py", line 33, in <module>
+    from tensorflow.python.checkpoint import functional_saver
+  File "/Users/musharp/eye_distance_flask_app/venv/lib/python3.9/site-packages/tensorflow/python/checkpoint/functional_saver.py", line 225, in <module>
+    class MultiDeviceSaver:
+  File "/Users/musharp/eye_distance_flask_app/venv/lib/python3.9/site-packages/tensorflow/python/checkpoint/functional_saver.py", line 361, in MultiDeviceSaver
+    def _traced_save(self, file_prefix: tensor_lib.Tensor) -> tensor_lib.Tensor:
+  File "/Users/musharp/eye_distance_flask_app/venv/lib/python3.9/site-packages/tensorflow/python/eager/polymorphic_function/polymorphic_function.py", line 1653, in decorated
+    decorator_func=Function(
+  File "/Users/musharp/eye_distance_flask_app/venv/lib/python3.9/site-packages/tensorflow/python/eager/polymorphic_function/polymorphic_function.py", line 492, in __init__
+    function_type_utils.make_function_type(python_function, input_signature)
+  File "/Users/musharp/eye_distance_flask_app/venv/lib/python3.9/site-packages/tensorflow/python/eager/polymorphic_function/function_type_utils.py", line 344, in make_function_type
+    _validate_signature(input_signature)
+  File "/Users/musharp/eye_distance_flask_app/venv/lib/python3.9/site-packages/tensorflow/python/eager/polymorphic_function/function_type_utils.py", line 474, in _validate_signature
+    for arg in nest.flatten(signature, expand_composites=True)
+  File "/Users/musharp/eye_distance_flask_app/venv/lib/python3.9/site-packages/tensorflow/python/util/nest.py", line 293, in flatten
+    return nest_util.flatten(
+  File "/Users/musharp/eye_distance_flask_app/venv/lib/python3.9/site-packages/tensorflow/python/util/nest_util.py", line 712, in flatten
+    return _tf_core_flatten(structure, expand_composites)
+  File "/Users/musharp/eye_distance_flask_app/venv/lib/python3.9/site-packages/tensorflow/python/util/nest_util.py", line 726, in _tf_core_flatten
+    return _pywrap_utils.Flatten(structure, expand_composites)
+AttributeError: 'tuple' object has no attribute '_type_spec'
+[2025-02-03 17:04:23 +0500] [3877] [ERROR] Exception in worker process
+Traceback (most recent call last):
+  File "/Users/musharp/eye_distance_flask_app/venv/lib/python3.9/site-packages/gunicorn/arbiter.py", line 609, in spawn_worker
+    worker.init_process()
+  File "/Users/musharp/eye_distance_flask_app/venv/lib/python3.9/site-packages/gunicorn/workers/base.py", line 134, in init_process
+    self.load_wsgi()
+  File "/Users/musharp/eye_distance_flask_app/venv/lib/python3.9/site-packages/gunicorn/workers/base.py", line 146, in load_wsgi
+    self.wsgi = self.app.wsgi()
+  File "/Users/musharp/eye_distance_flask_app/venv/lib/python3.9/site-packages/gunicorn/app/base.py", line 67, in wsgi
+    self.callable = self.load()
+  File "/Users/musharp/eye_distance_flask_app/venv/lib/python3.9/site-packages/gunicorn/app/wsgiapp.py", line 58, in load
+    return self.load_wsgiapp()
+  File "/Users/musharp/eye_distance_flask_app/venv/lib/python3.9/site-packages/gunicorn/app/wsgiapp.py", line 48, in load_wsgiapp
+    return util.import_app(self.app_uri)
+  File "/Users/musharp/eye_distance_flask_app/venv/lib/python3.9/site-packages/gunicorn/util.py", line 371, in import_app
+    mod = importlib.import_module(module)
+  File "/Users/musharp/.pyenv/versions/3.9.13/lib/python3.9/importlib/__init__.py", line 127, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+  File "<frozen importlib._bootstrap>", line 1030, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 1007, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 986, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 680, in _load_unlocked
+  File "<frozen importlib._bootstrap_external>", line 850, in exec_module
+  File "<frozen importlib._bootstrap>", line 228, in _call_with_frames_removed
+  File "/Users/musharp/eye_distance_flask_app/run.py", line 24, in <module>
+    app = create_app()
+  File "/Users/musharp/eye_distance_flask_app/run.py", line 18, in create_app
+    from app.routes import pupil_bp
+  File "/Users/musharp/eye_distance_flask_app/app/__init__.py", line 2, in <module>
+    from .routes import pupil_bp
+  File "/Users/musharp/eye_distance_flask_app/app/routes.py", line 5, in <module>
+    from .measurements import PupilDetector, PupilMeasurement
+  File "/Users/musharp/eye_distance_flask_app/app/measurements.py", line 1, in <module>
+    import mediapipe as mp
+  File "/Users/musharp/eye_distance_flask_app/venv/lib/python3.9/site-packages/mediapipe/__init__.py", line 17, in <module>
+    import mediapipe.tasks.python as tasks
+  File "/Users/musharp/eye_distance_flask_app/venv/lib/python3.9/site-packages/mediapipe/tasks/python/__init__.py", line 17, in <module>
+    from . import audio
+  File "/Users/musharp/eye_distance_flask_app/venv/lib/python3.9/site-packages/mediapipe/tasks/python/audio/__init__.py", line 18, in <module>
+    import mediapipe.tasks.python.audio.audio_classifier
+  File "/Users/musharp/eye_distance_flask_app/venv/lib/python3.9/site-packages/mediapipe/tasks/python/audio/audio_classifier.py", line 26, in <module>
+    from mediapipe.tasks.python.audio.core import base_audio_task_api
+  File "/Users/musharp/eye_distance_flask_app/venv/lib/python3.9/site-packages/mediapipe/tasks/python/audio/core/base_audio_task_api.py", line 25, in <module>
+    from mediapipe.tasks.python.core.optional_dependencies import doc_controls
+  File "/Users/musharp/eye_distance_flask_app/venv/lib/python3.9/site-packages/mediapipe/tasks/python/core/optional_dependencies.py", line 20, in <module>
+    from tensorflow.tools.docs import doc_controls
+  File "/Users/musharp/eye_distance_flask_app/venv/lib/python3.9/site-packages/tensorflow/__init__.py", line 45, in <module>
+    from tensorflow._api.v2 import __internal__
+  File "/Users/musharp/eye_distance_flask_app/venv/lib/python3.9/site-packages/tensorflow/_api/v2/__internal__/__init__.py", line 11, in <module>
+    from tensorflow._api.v2.__internal__ import distribute
+  File "/Users/musharp/eye_distance_flask_app/venv/lib/python3.9/site-packages/tensorflow/_api/v2/__internal__/distribute/__init__.py", line 8, in <module>
+    from tensorflow._api.v2.__internal__.distribute import combinations
+  File "/Users/musharp/eye_distance_flask_app/venv/lib/python3.9/site-packages/tensorflow/_api/v2/__internal__/distribute/combinations/__init__.py", line 8, in <module>
+    from tensorflow.python.distribute.combinations import env # line: 456
+  File "/Users/musharp/eye_distance_flask_app/venv/lib/python3.9/site-packages/tensorflow/python/distribute/combinations.py", line 36, in <module>
+    from tensorflow.python.distribute import multi_worker_test_base
+  File "/Users/musharp/eye_distance_flask_app/venv/lib/python3.9/site-packages/tensorflow/python/distribute/multi_worker_test_base.py", line 33, in <module>
+    from tensorflow.python.distribute import distribute_coordinator as dc
+  File "/Users/musharp/eye_distance_flask_app/venv/lib/python3.9/site-packages/tensorflow/python/distribute/distribute_coordinator.py", line 29, in <module>
+    from tensorflow.python.training import monitored_session
+  File "/Users/musharp/eye_distance_flask_app/venv/lib/python3.9/site-packages/tensorflow/python/training/monitored_session.py", line 22, in <module>
+    from tensorflow.python.checkpoint import checkpoint as trackable_util
+  File "/Users/musharp/eye_distance_flask_app/venv/lib/python3.9/site-packages/tensorflow/python/checkpoint/checkpoint.py", line 33, in <module>
+    from tensorflow.python.checkpoint import functional_saver
+  File "/Users/musharp/eye_distance_flask_app/venv/lib/python3.9/site-packages/tensorflow/python/checkpoint/functional_saver.py", line 225, in <module>
+    class MultiDeviceSaver:
+  File "/Users/musharp/eye_distance_flask_app/venv/lib/python3.9/site-packages/tensorflow/python/checkpoint/functional_saver.py", line 361, in MultiDeviceSaver
+    def _traced_save(self, file_prefix: tensor_lib.Tensor) -> tensor_lib.Tensor:
+  File "/Users/musharp/eye_distance_flask_app/venv/lib/python3.9/site-packages/tensorflow/python/eager/polymorphic_function/polymorphic_function.py", line 1653, in decorated
+    decorator_func=Function(
+  File "/Users/musharp/eye_distance_flask_app/venv/lib/python3.9/site-packages/tensorflow/python/eager/polymorphic_function/polymorphic_function.py", line 492, in __init__
+    function_type_utils.make_function_type(python_function, input_signature)
+  File "/Users/musharp/eye_distance_flask_app/venv/lib/python3.9/site-packages/tensorflow/python/eager/polymorphic_function/function_type_utils.py", line 344, in make_function_type
+    _validate_signature(input_signature)
+  File "/Users/musharp/eye_distance_flask_app/venv/lib/python3.9/site-packages/tensorflow/python/eager/polymorphic_function/function_type_utils.py", line 474, in _validate_signature
+    for arg in nest.flatten(signature, expand_composites=True)
+  File "/Users/musharp/eye_distance_flask_app/venv/lib/python3.9/site-packages/tensorflow/python/util/nest.py", line 293, in flatten
+    return nest_util.flatten(
+  File "/Users/musharp/eye_distance_flask_app/venv/lib/python3.9/site-packages/tensorflow/python/util/nest_util.py", line 712, in flatten
+    return _tf_core_flatten(structure, expand_composites)
+  File "/Users/musharp/eye_distance_flask_app/venv/lib/python3.9/site-packages/tensorflow/python/util/nest_util.py", line 726, in _tf_core_flatten
+    return _pywrap_utils.Flatten(structure, expand_composites)
+AttributeError: 'tuple' object has no attribute '_type_spec'
+[2025-02-03 17:04:23 +0500] [3877] [INFO] Worker exiting (pid: 3877)
+[2025-02-03 17:04:23 +0500] [3878] [INFO] Worker exiting (pid: 3878)
+[2025-02-03 17:04:24 +0500] [3876] [ERROR] Worker (pid:3890) was sent SIGKILL! Perhaps out of memory?
+[2025-02-03 17:04:24 +0500] [3876] [ERROR] Worker (pid:3895) was sent SIGKILL! Perhaps out of memory?
+[2025-02-03 17:04:24 +0500] [3876] [ERROR] Worker (pid:3892) was sent SIGKILL! Perhaps out of memory?
+[2025-02-03 17:04:24 +0500] [3876] [ERROR] Worker (pid:3889) was sent SIGKILL! Perhaps out of memory?
+[2025-02-03 17:04:24 +0500] [3876] [ERROR] Worker (pid:3886) was sent SIGKILL! Perhaps out of memory?
+[2025-02-03 17:04:24 +0500] [3876] [ERROR] Worker (pid:3884) was sent SIGKILL! Perhaps out of memory?
+[2025-02-03 17:04:24 +0500] [3876] [ERROR] Worker (pid:3883) was sent SIGKILL! Perhaps out of memory?
+[2025-02-03 17:04:24 +0500] [3978] [INFO] Booting worker with pid: 3978
+[2025-02-03 17:04:24 +0500] [3876] [ERROR] Worker (pid:3882) was sent SIGKILL! Perhaps out of memory?
+[2025-02-03 17:04:24 +0500] [3876] [ERROR] Worker (pid:3880) was sent SIGKILL! Perhaps out of memory?
+[2025-02-03 17:04:24 +0500] [3876] [ERROR] Worker (pid:3879) was sent SIGKILL! Perhaps out of memory?
+[2025-02-03 17:04:24 +0500] [3876] [ERROR] Worker (pid:3877) was sent SIGKILL! Perhaps out of memory?
+[2025-02-03 17:04:24 +0500] [3876] [ERROR] Worker (pid:3896) was sent SIGKILL! Perhaps out of memory?
+[2025-02-03 17:04:24 +0500] [3876] [ERROR] Worker (pid:3887) was sent SIGKILL! Perhaps out of memory?
+[2025-02-03 17:04:24 +0500] [3876] [ERROR] Worker (pid:3885) was sent SIGKILL! Perhaps out of memory?
+[2025-02-03 17:04:24 +0500] [3876] [ERROR] Worker (pid:3881) was sent SIGKILL! Perhaps out of memory?
+[2025-02-03 17:04:24 +0500] [3876] [ERROR] Worker (pid:3891) was sent SIGKILL! Perhaps out of memory?
+[2025-02-03 17:04:24 +0500] [3876] [ERROR] Worker (pid:3878) was sent SIGKILL! Perhaps out of memory?
+[2025-02-03 17:04:24 +0500] [3979] [INFO] Booting worker with pid: 3979
+[2025-02-03 17:04:24 +0500] [3980] [INFO] Booting worker with pid: 3980
+[2025-02-03 17:04:24 +0500] [3981] [INFO] Booting worker with pid: 3981
+[2025-02-03 17:04:24 +0500] [3982] [INFO] Booting worker with pid: 3982
+[2025-02-03 17:04:24 +0500] [3983] [INFO] Booting worker with pid: 3983
+[2025-02-03 17:04:24 +0500] [3984] [INFO] Booting worker with pid: 3984
+[2025-02-03 17:04:24 +0500] [3985] [INFO] Booting worker with pid: 3985
+[2025-02-03 17:04:24 +0500] [3986] [INFO] Booting worker with pid: 3986
+[2025-02-03 17:04:24 +0500] [3987] [INFO] Booting worker with pid: 3987
+[2025-02-03 17:04:24 +0500] [3988] [INFO] Booting worker with pid: 3988
+[2025-02-03 17:04:24 +0500] [3989] [INFO] Booting worker with pid: 3989
+[2025-02-03 17:04:25 +0500] [3990] [INFO] Booting worker with pid: 3990
+[2025-02-03 17:04:25 +0500] [3991] [INFO] Booting worker with pid: 3991
+[2025-02-03 17:04:25 +0500] [3992] [INFO] Booting worker with pid: 3992
+[2025-02-03 17:04:25 +0500] [3993] [INFO] Booting worker with pid: 3993
+[2025-02-03 17:04:25 +0500] [3994] [INFO] Booting worker with pid: 3994
+[2025-02-03 17:04:54 +0500] [3876] [CRITICAL] WORKER TIMEOUT (pid:3978)
+[2025-02-03 17:04:54 +0500] [3978] [INFO] Worker exiting (pid: 3978)
+[2025-02-03 17:04:54 +0500] [3876] [ERROR] Worker (pid:3978) exited with code 1
+[2025-02-03 17:04:54 +0500] [3876] [ERROR] Worker (pid:3978) exited with code 1.
+[2025-02-03 17:04:54 +0500] [3876] [CRITICAL] WORKER TIMEOUT (pid:3979)
+[2025-02-03 17:04:54 +0500] [3876] [CRITICAL] WORKER TIMEOUT (pid:3980)
+[2025-02-03 17:04:54 +0500] [3876] [CRITICAL] WORKER TIMEOUT (pid:3981)
+[2025-02-03 17:04:54 +0500] [3876] [CRITICAL] WORKER TIMEOUT (pid:3982)
+[2025-02-03 17:04:54 +0500] [3876] [CRITICAL] WORKER TIMEOUT (pid:3983)
+[2025-02-03 17:04:54 +0500] [3876] [CRITICAL] WORKER TIMEOUT (pid:3984)
+[2025-02-03 17:04:54 +0500] [3876] [CRITICAL] WORKER TIMEOUT (pid:3985)
+[2025-02-03 17:04:54 +0500] [3876] [CRITICAL] WORKER TIMEOUT (pid:3986)
+[2025-02-03 17:04:54 +0500] [3876] [CRITICAL] WORKER TIMEOUT (pid:3987)
+[2025-02-03 17:04:54 +0500] [3876] [CRITICAL] WORKER TIMEOUT (pid:3988)
+[2025-02-03 17:04:54 +0500] [3876] [CRITICAL] WORKER TIMEOUT (pid:3989)
+[2025-02-03 17:04:54 +0500] [3979] [INFO] Worker exiting (pid: 3979)
+[2025-02-03 17:04:54 +0500] [3980] [INFO] Worker exiting (pid: 3980)
+[2025-02-03 17:04:54 +0500] [3984] [INFO] Worker exiting (pid: 3984)
+[2025-02-03 17:04:54 +0500] [3985] [INFO] Worker exiting (pid: 3985)
+[2025-02-03 17:04:55 +0500] [4070] [INFO] Booting worker with pid: 4070
+[2025-02-03 17:04:55 +0500] [3981] [INFO] Worker exiting (pid: 3981)
+[2025-02-03 17:04:55 +0500] [3982] [INFO] Worker exiting (pid: 3982)
+[2025-02-03 17:04:55 +0500] [3983] [INFO] Worker exiting (pid: 3983)
+[2025-02-03 17:04:55 +0500] [3986] [INFO] Worker exiting (pid: 3986)
+[2025-02-03 17:04:55 +0500] [3989] [INFO] Worker exiting (pid: 3989)
+[2025-02-03 17:04:55 +0500] [3988] [INFO] Worker exiting (pid: 3988)
+[2025-02-03 17:04:55 +0500] [3987] [INFO] Worker exiting (pid: 3987)
+[2025-02-03 17:04:55 +0500] [3876] [ERROR] Worker (pid:3984) exited with code 1
+[2025-02-03 17:04:55 +0500] [3876] [ERROR] Worker (pid:3984) exited with code 1.
+[2025-02-03 17:04:55 +0500] [3876] [CRITICAL] WORKER TIMEOUT (pid:3990)
+[2025-02-03 17:04:55 +0500] [3876] [CRITICAL] WORKER TIMEOUT (pid:3991)
+[2025-02-03 17:04:55 +0500] [3876] [CRITICAL] WORKER TIMEOUT (pid:3992)
+[2025-02-03 17:04:55 +0500] [3876] [CRITICAL] WORKER TIMEOUT (pid:3993)
+[2025-02-03 17:04:55 +0500] [3876] [CRITICAL] WORKER TIMEOUT (pid:3994)
+[2025-02-03 17:04:55 +0500] [3994] [INFO] Worker exiting (pid: 3994)
+[2025-02-03 17:04:55 +0500] [3993] [INFO] Worker exiting (pid: 3993)
+[2025-02-03 17:04:55 +0500] [4071] [INFO] Booting worker with pid: 4071
+[2025-02-03 17:04:56 +0500] [3876] [ERROR] Worker (pid:3982) exited with code 1
+[2025-02-03 17:04:56 +0500] [3876] [ERROR] Worker (pid:3982) exited with code 1.
+[2025-02-03 17:04:56 +0500] [3990] [INFO] Worker exiting (pid: 3990)
+[2025-02-03 17:04:56 +0500] [3876] [ERROR] Worker (pid:3985) exited with code 1
+[2025-02-03 17:04:56 +0500] [3876] [ERROR] Worker (pid:3985) exited with code 1.
+[2025-02-03 17:04:56 +0500] [4072] [INFO] Booting worker with pid: 4072
+[2025-02-03 17:04:56 +0500] [3876] [ERROR] Worker (pid:3992) was sent SIGKILL! Perhaps out of memory?
+[2025-02-03 17:04:56 +0500] [3876] [ERROR] Worker (pid:3979) was sent SIGKILL! Perhaps out of memory?
+[2025-02-03 17:04:56 +0500] [3876] [ERROR] Worker (pid:3989) exited with code 1
+[2025-02-03 17:04:56 +0500] [3876] [ERROR] Worker (pid:3989) exited with code 1.
+[2025-02-03 17:04:56 +0500] [3876] [ERROR] Worker (pid:3986) exited with code 1
+[2025-02-03 17:04:56 +0500] [3876] [ERROR] Worker (pid:3986) exited with code 1.
+[2025-02-03 17:04:56 +0500] [3876] [ERROR] Worker (pid:3990) was sent SIGKILL! Perhaps out of memory?
+[2025-02-03 17:04:56 +0500] [3876] [ERROR] Worker (pid:3980) was sent SIGKILL! Perhaps out of memory?
+[2025-02-03 17:04:56 +0500] [3876] [ERROR] Worker (pid:3988) was sent SIGKILL! Perhaps out of memory?
+[2025-02-03 17:04:56 +0500] [3876] [ERROR] Worker (pid:3987) was sent SIGKILL! Perhaps out of memory?
+[2025-02-03 17:04:56 +0500] [3876] [ERROR] Worker (pid:3983) exited with code 1
+[2025-02-03 17:04:56 +0500] [3876] [ERROR] Worker (pid:3983) exited with code 1.
+[2025-02-03 17:04:56 +0500] [3876] [ERROR] Worker (pid:3991) was sent SIGKILL! Perhaps out of memory?
+[2025-02-03 17:04:56 +0500] [3876] [ERROR] Worker (pid:3994) was sent SIGKILL! Perhaps out of memory?
+[2025-02-03 17:04:56 +0500] [3876] [ERROR] Worker (pid:3981) was sent SIGKILL! Perhaps out of memory?
+[2025-02-03 17:04:56 +0500] [3876] [ERROR] Worker (pid:3993) was sent SIGKILL! Perhaps out of memory?
+[2025-02-03 17:04:56 +0500] [4073] [INFO] Booting worker with pid: 4073
+[2025-02-03 17:04:56 +0500] [4074] [INFO] Booting worker with pid: 4074
+[2025-02-03 17:04:56 +0500] [4075] [INFO] Booting worker with pid: 4075
+[2025-02-03 17:04:56 +0500] [4076] [INFO] Booting worker with pid: 4076
+[2025-02-03 17:04:56 +0500] [4077] [INFO] Booting worker with pid: 4077
+[2025-02-03 17:04:56 +0500] [4078] [INFO] Booting worker with pid: 4078
+[2025-02-03 17:04:56 +0500] [4079] [INFO] Booting worker with pid: 4079
+[2025-02-03 17:04:56 +0500] [4080] [INFO] Booting worker with pid: 4080
+[2025-02-03 17:04:56 +0500] [4081] [INFO] Booting worker with pid: 4081
+[2025-02-03 17:04:56 +0500] [4082] [INFO] Booting worker with pid: 4082
+[2025-02-03 17:04:56 +0500] [4083] [INFO] Booting worker with pid: 4083
+[2025-02-03 17:04:56 +0500] [4084] [INFO] Booting worker with pid: 4084
+[2025-02-03 17:04:56 +0500] [4089] [INFO] Booting worker with pid: 4089
+[2025-02-03 17:04:56 +0500] [4090] [INFO] Booting worker with pid: 4090
+[2025-02-03 17:05:25 +0500] [3876] [CRITICAL] WORKER TIMEOUT (pid:4070)
+[2025-02-03 17:05:26 +0500] [3876] [CRITICAL] WORKER TIMEOUT (pid:4071)
+[2025-02-03 17:05:26 +0500] [3876] [CRITICAL] WORKER TIMEOUT (pid:4072)
+[2025-02-03 17:05:26 +0500] [3876] [CRITICAL] WORKER TIMEOUT (pid:4073)
+[2025-02-03 17:05:26 +0500] [3876] [CRITICAL] WORKER TIMEOUT (pid:4074)
+[2025-02-03 17:05:26 +0500] [3876] [CRITICAL] WORKER TIMEOUT (pid:4075)
+[2025-02-03 17:05:26 +0500] [3876] [CRITICAL] WORKER TIMEOUT (pid:4076)
+[2025-02-03 17:05:26 +0500] [3876] [CRITICAL] WORKER TIMEOUT (pid:4077)
+[2025-02-03 17:05:26 +0500] [3876] [CRITICAL] WORKER TIMEOUT (pid:4078)
+[2025-02-03 17:05:26 +0500] [3876] [CRITICAL] WORKER TIMEOUT (pid:4079)
+[2025-02-03 17:05:26 +0500] [3876] [CRITICAL] WORKER TIMEOUT (pid:4080)
+[2025-02-03 17:05:26 +0500] [3876] [CRITICAL] WORKER TIMEOUT (pid:4081)
+[2025-02-03 17:05:26 +0500] [3876] [CRITICAL] WORKER TIMEOUT (pid:4082)
+[2025-02-03 17:05:26 +0500] [3876] [CRITICAL] WORKER TIMEOUT (pid:4083)
+[2025-02-03 17:05:26 +0500] [3876] [CRITICAL] WORKER TIMEOUT (pid:4084)
+[2025-02-03 17:05:26 +0500] [3876] [CRITICAL] WORKER TIMEOUT (pid:4089)
+[2025-02-03 17:05:26 +0500] [3876] [CRITICAL] WORKER TIMEOUT (pid:4090)
+[2025-02-03 17:05:27 +0500] [3876] [ERROR] Worker (pid:4070) was sent SIGKILL! Perhaps out of memory?
+[2025-02-03 17:05:27 +0500] [4152] [INFO] Booting worker with pid: 4152
+[2025-02-03 17:05:27 +0500] [3876] [ERROR] Worker (pid:4076) was sent SIGKILL! Perhaps out of memory?
+[2025-02-03 17:05:27 +0500] [3876] [ERROR] Worker (pid:4075) was sent SIGKILL! Perhaps out of memory?
+[2025-02-03 17:05:27 +0500] [3876] [ERROR] Worker (pid:4080) was sent SIGKILL! Perhaps out of memory?
+[2025-02-03 17:05:27 +0500] [3876] [ERROR] Worker (pid:4082) was sent SIGKILL! Perhaps out of memory?
+[2025-02-03 17:05:27 +0500] [3876] [ERROR] Worker (pid:4084) was sent SIGKILL! Perhaps out of memory?
+[2025-02-03 17:05:27 +0500] [3876] [ERROR] Worker (pid:4090) was sent SIGKILL! Perhaps out of memory?
+[2025-02-03 17:05:27 +0500] [3876] [ERROR] Worker (pid:4077) was sent SIGKILL! Perhaps out of memory?
+[2025-02-03 17:05:27 +0500] [3876] [ERROR] Worker (pid:4079) was sent SIGKILL! Perhaps out of memory?
+[2025-02-03 17:05:27 +0500] [3876] [ERROR] Worker (pid:4081) was sent SIGKILL! Perhaps out of memory?
+[2025-02-03 17:05:27 +0500] [4153] [INFO] Booting worker with pid: 4153
+[2025-02-03 17:05:27 +0500] [4154] [INFO] Booting worker with pid: 4154
+[2025-02-03 17:05:27 +0500] [4155] [INFO] Booting worker with pid: 4155
+[2025-02-03 17:05:27 +0500] [4156] [INFO] Booting worker with pid: 4156
+[2025-02-03 17:05:27 +0500] [4160] [INFO] Booting worker with pid: 4160
+[2025-02-03 17:05:27 +0500] [4162] [INFO] Booting worker with pid: 4162
+[2025-02-03 17:05:27 +0500] [4163] [INFO] Booting worker with pid: 4163
+[2025-02-03 17:05:27 +0500] [4164] [INFO] Booting worker with pid: 4164
+[2025-02-03 17:05:27 +0500] [4165] [INFO] Booting worker with pid: 4165
+[2025-02-03 17:05:28 +0500] [4166] [INFO] Booting worker with pid: 4166
+[2025-02-03 17:05:28 +0500] [4167] [INFO] Booting worker with pid: 4167
+[2025-02-03 17:05:28 +0500] [4168] [INFO] Booting worker with pid: 4168
+[2025-02-03 17:05:28 +0500] [4169] [INFO] Booting worker with pid: 4169
+[2025-02-03 17:05:28 +0500] [4170] [INFO] Booting worker with pid: 4170
+[2025-02-03 17:05:28 +0500] [4171] [INFO] Booting worker with pid: 4171
+[2025-02-03 17:05:28 +0500] [4172] [INFO] Booting worker with pid: 4172
+[2025-02-03 17:05:57 +0500] [3876] [CRITICAL] WORKER TIMEOUT (pid:4152)
+[2025-02-03 17:05:58 +0500] [3876] [CRITICAL] WORKER TIMEOUT (pid:4153)
+[2025-02-03 17:05:58 +0500] [3876] [CRITICAL] WORKER TIMEOUT (pid:4154)
+[2025-02-03 17:05:58 +0500] [3876] [CRITICAL] WORKER TIMEOUT (pid:4155)
+[2025-02-03 17:05:58 +0500] [3876] [CRITICAL] WORKER TIMEOUT (pid:4156)
+[2025-02-03 17:05:58 +0500] [3876] [CRITICAL] WORKER TIMEOUT (pid:4160)
+[2025-02-03 17:05:58 +0500] [3876] [CRITICAL] WORKER TIMEOUT (pid:4162)
+[2025-02-03 17:05:58 +0500] [3876] [CRITICAL] WORKER TIMEOUT (pid:4163)
+[2025-02-03 17:05:58 +0500] [3876] [CRITICAL] WORKER TIMEOUT (pid:4164)
+[2025-02-03 17:05:58 +0500] [3876] [CRITICAL] WORKER TIMEOUT (pid:4165)
+[2025-02-03 17:05:58 +0500] [3876] [CRITICAL] WORKER TIMEOUT (pid:4166)
+[2025-02-03 17:05:58 +0500] [3876] [CRITICAL] WORKER TIMEOUT (pid:4167)
+[2025-02-03 17:05:58 +0500] [3876] [CRITICAL] WORKER TIMEOUT (pid:4168)
+[2025-02-03 17:05:58 +0500] [3876] [CRITICAL] WORKER TIMEOUT (pid:4169)
+[2025-02-03 17:05:58 +0500] [3876] [CRITICAL] WORKER TIMEOUT (pid:4170)
+[2025-02-03 17:05:58 +0500] [3876] [CRITICAL] WORKER TIMEOUT (pid:4171)
+[2025-02-03 17:05:58 +0500] [3876] [CRITICAL] WORKER TIMEOUT (pid:4172)
+[2025-02-03 17:05:58 +0500] [3876] [ERROR] Worker (pid:4152) was sent SIGKILL! Perhaps out of memory?
+[2025-02-03 17:05:58 +0500] [4240] [INFO] Booting worker with pid: 4240
+[2025-02-03 17:05:58 +0500] [3876] [ERROR] Worker (pid:4172) was sent SIGKILL! Perhaps out of memory?
+[2025-02-03 17:05:58 +0500] [4241] [INFO] Booting worker with pid: 4241
+[2025-02-03 17:05:58 +0500] [3876] [ERROR] Worker (pid:4165) was sent SIGKILL! Perhaps out of memory?
+[2025-02-03 17:05:58 +0500] [3876] [ERROR] Worker (pid:4164) was sent SIGKILL! Perhaps out of memory?
+[2025-02-03 17:05:58 +0500] [3876] [ERROR] Worker (pid:4160) was sent SIGKILL! Perhaps out of memory?
+[2025-02-03 17:05:58 +0500] [3876] [ERROR] Worker (pid:4154) was sent SIGKILL! Perhaps out of memory?
+[2025-02-03 17:05:58 +0500] [3876] [ERROR] Worker (pid:4168) was sent SIGKILL! Perhaps out of memory?
+[2025-02-03 17:05:58 +0500] [3876] [ERROR] Worker (pid:4153) was sent SIGKILL! Perhaps out of memory?
+[2025-02-03 17:05:58 +0500] [3876] [ERROR] Worker (pid:4169) was sent SIGKILL! Perhaps out of memory?
+[2025-02-03 17:05:58 +0500] [3876] [ERROR] Worker (pid:4171) was sent SIGKILL! Perhaps out of memory?
+[2025-02-03 17:05:58 +0500] [3876] [ERROR] Worker (pid:4162) was sent SIGKILL! Perhaps out of memory?
+[2025-02-03 17:05:58 +0500] [3876] [ERROR] Worker (pid:4156) was sent SIGKILL! Perhaps out of memory?
+[2025-02-03 17:05:58 +0500] [3876] [ERROR] Worker (pid:4163) was sent SIGKILL! Perhaps out of memory?
+[2025-02-03 17:05:58 +0500] [3876] [ERROR] Worker (pid:4155) was sent SIGKILL! Perhaps out of memory?
+[2025-02-03 17:05:58 +0500] [3876] [ERROR] Worker (pid:4170) was sent SIGKILL! Perhaps out of memory?
+[2025-02-03 17:05:58 +0500] [3876] [ERROR] Worker (pid:4167) was sent SIGKILL! Perhaps out of memory?
+[2025-02-03 17:05:58 +0500] [4242] [INFO] Booting worker with pid: 4242
+[2025-02-03 17:05:58 +0500] [3876] [ERROR] Worker (pid:4166) was sent SIGKILL! Perhaps out of memory?
+[2025-02-03 17:05:58 +0500] [4243] [INFO] Booting worker with pid: 4243
+[2025-02-03 17:05:58 +0500] [4248] [INFO] Booting worker with pid: 4248
+[2025-02-03 17:05:58 +0500] [4249] [INFO] Booting worker with pid: 4249
+[2025-02-03 17:05:59 +0500] [4250] [INFO] Booting worker with pid: 4250
+[2025-02-03 17:05:59 +0500] [4251] [INFO] Booting worker with pid: 4251
+[2025-02-03 17:05:59 +0500] [4252] [INFO] Booting worker with pid: 4252
+[2025-02-03 17:05:59 +0500] [4253] [INFO] Booting worker with pid: 4253
+[2025-02-03 17:05:59 +0500] [4254] [INFO] Booting worker with pid: 4254
+[2025-02-03 17:05:59 +0500] [4255] [INFO] Booting worker with pid: 4255
+[2025-02-03 17:05:59 +0500] [4256] [INFO] Booting worker with pid: 4256
+[2025-02-03 17:05:59 +0500] [4257] [INFO] Booting worker with pid: 4257
+[2025-02-03 17:05:59 +0500] [4258] [INFO] Booting worker with pid: 4258
+[2025-02-03 17:05:59 +0500] [4259] [INFO] Booting worker with pid: 4259
+[2025-02-03 17:05:59 +0500] [4260] [INFO] Booting worker with pid: 4260
+[2025-02-03 17:06:09 +0500] [3876] [INFO] Handling signal: int
+[2025-02-03 17:06:17 +0500] [3876] [ERROR] Worker (pid:4260) was sent SIGHUP!
+[2025-02-03 17:06:17 +0500] [3876] [ERROR] Worker (pid:4257) was sent SIGHUP!
+[2025-02-03 17:06:17 +0500] [3876] [ERROR] Worker (pid:4248) was sent SIGHUP!
+[2025-02-03 17:06:17 +0500] [3876] [ERROR] Worker (pid:4256) was sent SIGHUP!
+[2025-02-03 17:06:17 +0500] [3876] [ERROR] Worker (pid:4243) was sent SIGHUP!
+[2025-02-03 17:06:17 +0500] [3876] [ERROR] Worker (pid:4249) was sent SIGHUP!
+[2025-02-03 17:06:17 +0500] [3876] [ERROR] Worker (pid:4250) was sent SIGHUP!
+[2025-02-03 17:06:17 +0500] [3876] [INFO] Shutting down: Master
+[2025-02-03 17:06:31 +0500] [4703] [DEBUG] Current configuration:
+  config: gunicorn_config.py
+  wsgi_app: None
+  bind: ['0.0.0.0:8000']
+  backlog: 2048
+  workers: 1
+  worker_class: gthread
+  threads: 4
+  worker_connections: 1000
+  max_requests: 0
+  max_requests_jitter: 0
+  timeout: 60
+  graceful_timeout: 30
+  keepalive: 2
+  limit_request_line: 4094
+  limit_request_fields: 100
+  limit_request_field_size: 8190
+  reload: True
+  reload_engine: auto
+  reload_extra_files: []
+  spew: False
+  check_config: False
+  print_config: False
+  preload_app: True
+  sendfile: None
+  reuse_port: False
+  chdir: /Users/musharp/eye_distance_flask_app
+  daemon: False
+  raw_env: []
+  pidfile: logs/gunicorn.pid
+  worker_tmp_dir: None
+  user: 501
+  group: 20
+  umask: 0
+  initgroups: False
+  tmp_upload_dir: None
+  secure_scheme_headers: {'X-FORWARDED-PROTOCOL': 'ssl', 'X-FORWARDED-PROTO': 'https', 'X-FORWARDED-SSL': 'on'}
+  forwarded_allow_ips: ['127.0.0.1']
+  accesslog: logs/gunicorn-access.log
+  disable_redirect_access_to_syslog: False
+  access_log_format: %(h)s %(l)s %(u)s %(t)s "%(r)s" %(s)s %(b)s "%(f)s" "%(a)s"
+  errorlog: logs/gunicorn-error.log
+  loglevel: debug
+  capture_output: False
+  logger_class: gunicorn.glogging.Logger
+  logconfig: None
+  logconfig_dict: {}
+  logconfig_json: None
+  syslog_addr: unix:///var/run/syslog
+  syslog: False
+  syslog_prefix: None
+  syslog_facility: user
+  enable_stdio_inheritance: False
+  statsd_host: None
+  dogstatsd_tags: 
+  statsd_prefix: 
+  proc_name: pd_measurement
+  default_proc_name: run:app
+  pythonpath: None
+  paste: None
+  on_starting: <function OnStarting.on_starting at 0x1013f0e50>
+  on_reload: <function OnReload.on_reload at 0x1013f0f70>
+  when_ready: <function WhenReady.when_ready at 0x10140a0d0>
+  pre_fork: <function Prefork.pre_fork at 0x10140a1f0>
+  post_fork: <function post_fork at 0x101399dc0>
+  post_worker_init: <function PostWorkerInit.post_worker_init at 0x10140a430>
+  worker_int: <function WorkerInt.worker_int at 0x10140a550>
+  worker_abort: <function WorkerAbort.worker_abort at 0x10140a670>
+  pre_exec: <function PreExec.pre_exec at 0x10140a790>
+  pre_request: <function PreRequest.pre_request at 0x10140a8b0>
+  post_request: <function PostRequest.post_request at 0x10140a940>
+  child_exit: <function ChildExit.child_exit at 0x10140aa60>
+  worker_exit: <function WorkerExit.worker_exit at 0x10140ab80>
+  nworkers_changed: <function NumWorkersChanged.nworkers_changed at 0x10140aca0>
+  on_exit: <function OnExit.on_exit at 0x10140adc0>
+  ssl_context: <function NewSSLContext.ssl_context at 0x10140aee0>
+  proxy_protocol: False
+  proxy_allow_ips: ['127.0.0.1']
+  keyfile: None
+  certfile: None
+  ssl_version: 2
+  cert_reqs: 0
+  ca_certs: None
+  suppress_ragged_eofs: True
+  do_handshake_on_connect: False
+  ciphers: None
+  raw_paste_global_conf: []
+  strip_header_spaces: False
+[2025-02-03 17:06:42 +0500] [4703] [INFO] Starting gunicorn 21.2.0
+[2025-02-03 17:06:42 +0500] [4703] [DEBUG] Arbiter booted
+[2025-02-03 17:06:42 +0500] [4703] [INFO] Listening at: http://0.0.0.0:8000 (4703)
+[2025-02-03 17:06:42 +0500] [4703] [INFO] Using worker: gthread
+[2025-02-03 17:06:42 +0500] [4734] [INFO] Booting worker with pid: 4734
+[2025-02-03 17:06:42 +0500] [4703] [DEBUG] 1 workers
+[2025-02-03 17:06:54 +0500] [4734] [DEBUG] GET /
+[2025-02-03 17:06:54 +0500] [4734] [DEBUG] GET /video_feed
+[2025-02-03 17:06:54 +0500] [4734] [DEBUG] GET /static/css/style.css
+[2025-02-03 17:10:00 +0500] [4703] [INFO] Handling signal: int
+[2025-02-03 17:10:00 +0500] [4734] [INFO] Worker exiting (pid: 4734)
+[2025-02-03 17:10:01 +0500] [4703] [INFO] Shutting down: Master
+[2025-02-03 17:10:04 +0500] [5203] [DEBUG] Current configuration:
+  config: gunicorn_config.py
+  wsgi_app: None
+  bind: ['0.0.0.0:8000']
+  backlog: 2048
+  workers: 1
+  worker_class: gthread
+  threads: 4
+  worker_connections: 1000
+  max_requests: 0
+  max_requests_jitter: 0
+  timeout: 60
+  graceful_timeout: 30
+  keepalive: 2
+  limit_request_line: 4094
+  limit_request_fields: 100
+  limit_request_field_size: 8190
+  reload: True
+  reload_engine: auto
+  reload_extra_files: []
+  spew: False
+  check_config: False
+  print_config: False
+  preload_app: True
+  sendfile: None
+  reuse_port: False
+  chdir: /Users/musharp/eye_distance_flask_app
+  daemon: False
+  raw_env: []
+  pidfile: logs/gunicorn.pid
+  worker_tmp_dir: None
+  user: 501
+  group: 20
+  umask: 0
+  initgroups: False
+  tmp_upload_dir: None
+  secure_scheme_headers: {'X-FORWARDED-PROTOCOL': 'ssl', 'X-FORWARDED-PROTO': 'https', 'X-FORWARDED-SSL': 'on'}
+  forwarded_allow_ips: ['127.0.0.1']
+  accesslog: logs/gunicorn-access.log
+  disable_redirect_access_to_syslog: False
+  access_log_format: %(h)s %(l)s %(u)s %(t)s "%(r)s" %(s)s %(b)s "%(f)s" "%(a)s"
+  errorlog: logs/gunicorn-error.log
+  loglevel: debug
+  capture_output: False
+  logger_class: gunicorn.glogging.Logger
+  logconfig: None
+  logconfig_dict: {}
+  logconfig_json: None
+  syslog_addr: unix:///var/run/syslog
+  syslog: False
+  syslog_prefix: None
+  syslog_facility: user
+  enable_stdio_inheritance: False
+  statsd_host: None
+  dogstatsd_tags: 
+  statsd_prefix: 
+  proc_name: pd_measurement
+  default_proc_name: run:app
+  pythonpath: None
+  paste: None
+  on_starting: <function OnStarting.on_starting at 0x10abbde50>
+  on_reload: <function OnReload.on_reload at 0x10abbdf70>
+  when_ready: <function WhenReady.when_ready at 0x10abd60d0>
+  pre_fork: <function Prefork.pre_fork at 0x10abd61f0>
+  post_fork: <function post_fork at 0x10ab65dc0>
+  post_worker_init: <function PostWorkerInit.post_worker_init at 0x10abd6430>
+  worker_int: <function WorkerInt.worker_int at 0x10abd6550>
+  worker_abort: <function WorkerAbort.worker_abort at 0x10abd6670>
+  pre_exec: <function PreExec.pre_exec at 0x10abd6790>
+  pre_request: <function PreRequest.pre_request at 0x10abd68b0>
+  post_request: <function PostRequest.post_request at 0x10abd6940>
+  child_exit: <function ChildExit.child_exit at 0x10abd6a60>
+  worker_exit: <function WorkerExit.worker_exit at 0x10abd6b80>
+  nworkers_changed: <function NumWorkersChanged.nworkers_changed at 0x10abd6ca0>
+  on_exit: <function OnExit.on_exit at 0x10abd6dc0>
+  ssl_context: <function NewSSLContext.ssl_context at 0x10abd6ee0>
+  proxy_protocol: False
+  proxy_allow_ips: ['127.0.0.1']
+  keyfile: None
+  certfile: None
+  ssl_version: 2
+  cert_reqs: 0
+  ca_certs: None
+  suppress_ragged_eofs: True
+  do_handshake_on_connect: False
+  ciphers: None
+  raw_paste_global_conf: []
+  strip_header_spaces: False
+[2025-02-03 17:10:14 +0500] [5203] [INFO] Starting gunicorn 21.2.0
+[2025-02-03 17:10:14 +0500] [5203] [DEBUG] Arbiter booted
+[2025-02-03 17:10:14 +0500] [5203] [INFO] Listening at: http://0.0.0.0:8000 (5203)
+[2025-02-03 17:10:14 +0500] [5203] [INFO] Using worker: gthread
+[2025-02-03 17:10:14 +0500] [5237] [INFO] Booting worker with pid: 5237
+[2025-02-03 17:10:14 +0500] [5203] [DEBUG] 1 workers
+[2025-02-03 17:10:45 +0500] [5237] [DEBUG] GET /
+[2025-02-03 17:10:45 +0500] [5237] [DEBUG] GET /static/css/style.css
+[2025-02-03 17:10:45 +0500] [5237] [DEBUG] GET /video_feed
+[2025-02-03 17:11:12 +0500] [5237] [DEBUG] GET /
+[2025-02-03 17:11:12 +0500] [5237] [DEBUG] GET /video_feed
+[2025-02-03 17:11:12 +0500] [5237] [DEBUG] GET /static/css/style.css
+[2025-02-03 17:13:21 +0500] [5237] [DEBUG] GET /
+[2025-02-03 17:13:21 +0500] [5237] [DEBUG] GET /static/css/style.css
+[2025-02-03 17:13:21 +0500] [5237] [DEBUG] GET /video_feed
+[2025-02-03 17:13:47 +0500] [5203] [INFO] Handling signal: int
+[2025-02-03 17:13:47 +0500] [5237] [INFO] Worker exiting (pid: 5237)
+[2025-02-03 17:13:48 +0500] [5203] [INFO] Shutting down: Master
+[2025-02-03 17:13:53 +0500] [5732] [DEBUG] Current configuration:
+  config: gunicorn_config.py
+  wsgi_app: None
+  bind: ['0.0.0.0:8000']
+  backlog: 2048
+  workers: 1
+  worker_class: gthread
+  threads: 4
+  worker_connections: 1000
+  max_requests: 0
+  max_requests_jitter: 0
+  timeout: 60
+  graceful_timeout: 30
+  keepalive: 2
+  limit_request_line: 4094
+  limit_request_fields: 100
+  limit_request_field_size: 8190
+  reload: True
+  reload_engine: auto
+  reload_extra_files: []
+  spew: False
+  check_config: False
+  print_config: False
+  preload_app: True
+  sendfile: None
+  reuse_port: False
+  chdir: /Users/musharp/eye_distance_flask_app
+  daemon: False
+  raw_env: []
+  pidfile: logs/gunicorn.pid
+  worker_tmp_dir: None
+  user: 501
+  group: 20
+  umask: 0
+  initgroups: False
+  tmp_upload_dir: None
+  secure_scheme_headers: {'X-FORWARDED-PROTOCOL': 'ssl', 'X-FORWARDED-PROTO': 'https', 'X-FORWARDED-SSL': 'on'}
+  forwarded_allow_ips: ['127.0.0.1']
+  accesslog: logs/gunicorn-access.log
+  disable_redirect_access_to_syslog: False
+  access_log_format: %(h)s %(l)s %(u)s %(t)s "%(r)s" %(s)s %(b)s "%(f)s" "%(a)s"
+  errorlog: logs/gunicorn-error.log
+  loglevel: debug
+  capture_output: False
+  logger_class: gunicorn.glogging.Logger
+  logconfig: None
+  logconfig_dict: {}
+  logconfig_json: None
+  syslog_addr: unix:///var/run/syslog
+  syslog: False
+  syslog_prefix: None
+  syslog_facility: user
+  enable_stdio_inheritance: False
+  statsd_host: None
+  dogstatsd_tags: 
+  statsd_prefix: 
+  proc_name: pd_measurement
+  default_proc_name: run:app
+  pythonpath: None
+  paste: None
+  on_starting: <function OnStarting.on_starting at 0x109a3be50>
+  on_reload: <function OnReload.on_reload at 0x109a3bf70>
+  when_ready: <function WhenReady.when_ready at 0x109a550d0>
+  pre_fork: <function Prefork.pre_fork at 0x109a551f0>
+  post_fork: <function post_fork at 0x1099e4dc0>
+  post_worker_init: <function PostWorkerInit.post_worker_init at 0x109a55430>
+  worker_int: <function WorkerInt.worker_int at 0x109a55550>
+  worker_abort: <function WorkerAbort.worker_abort at 0x109a55670>
+  pre_exec: <function PreExec.pre_exec at 0x109a55790>
+  pre_request: <function PreRequest.pre_request at 0x109a558b0>
+  post_request: <function PostRequest.post_request at 0x109a55940>
+  child_exit: <function ChildExit.child_exit at 0x109a55a60>
+  worker_exit: <function WorkerExit.worker_exit at 0x109a55b80>
+  nworkers_changed: <function NumWorkersChanged.nworkers_changed at 0x109a55ca0>
+  on_exit: <function OnExit.on_exit at 0x109a55dc0>
+  ssl_context: <function NewSSLContext.ssl_context at 0x109a55ee0>
+  proxy_protocol: False
+  proxy_allow_ips: ['127.0.0.1']
+  keyfile: None
+  certfile: None
+  ssl_version: 2
+  cert_reqs: 0
+  ca_certs: None
+  suppress_ragged_eofs: True
+  do_handshake_on_connect: False
+  ciphers: None
+  raw_paste_global_conf: []
+  strip_header_spaces: False
+[2025-02-03 17:14:02 +0500] [5732] [INFO] Starting gunicorn 21.2.0
+[2025-02-03 17:14:02 +0500] [5732] [DEBUG] Arbiter booted
+[2025-02-03 17:14:02 +0500] [5732] [INFO] Listening at: http://0.0.0.0:8000 (5732)
+[2025-02-03 17:14:02 +0500] [5732] [INFO] Using worker: gthread
+[2025-02-03 17:14:02 +0500] [5763] [INFO] Booting worker with pid: 5763
+[2025-02-03 17:14:02 +0500] [5732] [DEBUG] 1 workers
+[2025-02-03 17:14:26 +0500] [5763] [DEBUG] GET /
+[2025-02-03 17:14:27 +0500] [5763] [DEBUG] GET /video_feed
+[2025-02-03 17:14:27 +0500] [5763] [DEBUG] GET /static/css/style.css
+[2025-02-03 17:17:38 +0500] [5732] [INFO] Handling signal: int
+[2025-02-03 17:17:38 +0500] [5763] [INFO] Worker exiting (pid: 5763)
+[2025-02-03 17:17:39 +0500] [5732] [INFO] Shutting down: Master

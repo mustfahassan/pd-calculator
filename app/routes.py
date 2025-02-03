@@ -9,7 +9,6 @@ from .resource_manager import ResourceManager
 # Create blueprint
 pupil_bp = Blueprint('pupil', __name__)
 
-
 # Global objects
 detector = PupilDetector()
 webcam_handler = WebcamHandler()
@@ -22,6 +21,16 @@ alignment_status = {"aligned": False, "message": "Look at the camera"}
 STABILITY_THRESHOLD = 30
 MEASUREMENT_FRAMES = 10
 measurement_buffer = []
+
+def reset_state():
+    """Reset all global state variables"""
+    global is_running, is_measuring, camera_started, stable_frame_count, last_measurement
+    is_running = False
+    is_measuring = False
+    camera_started = False
+    stable_frame_count = 0
+    last_measurement = None
+    measurement_buffer.clear()
 
 def process_frame(frame):
     """Process a single frame with pupil detection and visualization"""
@@ -53,17 +62,15 @@ def process_frame(frame):
             if is_measuring:
                 measurement = detector.detect_pupils(frame, results)
                 if measurement:
-                    # Calculate quality score using the existing function
                     quality = detector.calculate_measurement_quality(
                         results.multi_face_landmarks[0],
                         detector._calculate_iris_center(results.multi_face_landmarks[0], detector.LEFT_IRIS),
                         detector._calculate_iris_center(results.multi_face_landmarks[0], detector.RIGHT_IRIS)
                     )
-                    measurement.confidence = quality  # Update measurement quality
+                    measurement.confidence = quality
                     measurement_buffer.append(measurement)
                     
                     if len(measurement_buffer) >= MEASUREMENT_FRAMES:
-                        # Calculate average PD
                         avg_pd_mm = sum(m.pd_mm for m in measurement_buffer) / len(measurement_buffer)
                         avg_quality = sum(m.confidence for m in measurement_buffer) / len(measurement_buffer)
                         
@@ -81,7 +88,6 @@ def process_frame(frame):
             alignment_status = {"aligned": False, "message": "No face detected. Please look at the camera."}
             stable_frame_count = 0
         
-        # Add instruction text
         frame = webcam_handler.add_instruction_text(
             frame, 
             f"Stability: {stable_frame_count}/{STABILITY_THRESHOLD}" if stable_frame_count > 0 else alignment_status["message"],
@@ -101,23 +107,29 @@ def generate_frames():
     print("Starting frame generation")
     is_running = True
     while is_running and camera_started:
-        print("Attempting to read frame")
-        success, frame = webcam_handler.cap.read()
-        if not success:
+        try:
+            success, frame = webcam_handler.read_frame()
+            if not success:
+                print("Failed to read frame")
+                break
+                
+            # Process frame
+            processed_frame = process_frame(frame)
+                
+            # Encode frame for streaming
+            ret, buffer = cv2.imencode('.jpg', processed_frame)
+            if not ret:
+                continue
+                
+            # Convert to bytes
+            frame_bytes = buffer.tobytes()
+            yield (b'--frame\r\n'
+                   b'Content-Type: image/jpeg\r\n\r\n' + frame_bytes + b'\r\n')
+        except Exception as e:
+            print(f"Error in generate_frames: {str(e)}")
             break
-            
-        # Process frame
-        processed_frame = process_frame(frame)
-            
-        # Encode frame for streaming
-        ret, buffer = cv2.imencode('.jpg', processed_frame)
-        if not ret:
-            continue
-            
-        # Convert to bytes
-        frame_bytes = buffer.tobytes()
-        yield (b'--frame\r\n'
-               b'Content-Type: image/jpeg\r\n\r\n' + frame_bytes + b'\r\n')
+    
+    print("Frame generation stopped")
 
 @pupil_bp.route('/')
 def index():
@@ -129,8 +141,7 @@ def video_feed():
     """Video streaming route"""
     global camera_started
     if not camera_started:
-        # Return a blank frame if camera isn't started
-        blank_frame = np.zeros((480, 640, 3), dtype=np.uint8)
+        blank_frame = webcam_handler.get_blank_frame("Click Start Measurement to begin")
         _, buffer = cv2.imencode('.jpg', blank_frame)
         frame_bytes = buffer.tobytes()
         return Response(b'--frame\r\n'
@@ -144,6 +155,8 @@ def start_camera():
     """Start the camera feed"""
     global camera_started, is_measuring, stable_frame_count
     try:
+        if webcam_handler.cap is not None:
+            webcam_handler.release()
         webcam_handler.initialize_camera()
         camera_started = True
         is_measuring = False
@@ -167,8 +180,8 @@ def get_status():
 def get_measurement():
     """Get the latest measurement result"""
     if last_measurement:
-        quality_percentage = int(last_measurement.confidence * 100)  # Convert to percentage
-        print(f"Quality Score: {quality_percentage}%")  # Debug print
+        quality_percentage = int(last_measurement.confidence * 100)
+        print(f"Quality Score: {quality_percentage}%")
         
         return jsonify({
             'pd_mm': round(last_measurement.pd_mm, 1),
@@ -181,23 +194,26 @@ def get_measurement():
 @pupil_bp.route('/stop', methods=['POST'])
 def stop():
     """Stop video streaming and cleanup resources"""
+    global is_running, camera_started
     try:
-        ResourceManager.cleanup_resources()
+        is_running = False
+        camera_started = False
+        if webcam_handler.cap is not None:
+            webcam_handler.release()
+        reset_state()
         return jsonify({'status': 'success'})
     except Exception as e:
         print(f"Error in stop route: {str(e)}")
         return jsonify({'status': 'error', 'message': str(e)}), 500
     finally:
-        # Force cleanup attempt even if error occurs
-        try:
-            ResourceManager.cleanup_resources()
-        except:
-            pass
+        # Reset state even if error occurs
+        reset_state()
 
 # Error handlers
 @pupil_bp.errorhandler(Exception)
 def handle_error(error):
     """Handle any server errors"""
+    print(f"Server error: {str(error)}")
     return jsonify({
         'error': str(error),
         'status': 'error'

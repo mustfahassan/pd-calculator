@@ -2,7 +2,7 @@ import platform
 import time
 import cv2
 import numpy as np
-from typing import Tuple, Optional, Dict
+from typing import List, Tuple, Optional, Dict
 from dataclasses import dataclass
 
 @dataclass
@@ -14,29 +14,56 @@ class VisualizationConfig:
     font_scale: float = 0.6
     thickness: int = 2
 
+
+
+
 class FaceAlignmentGuide:
     def __init__(self, frame_width: int, frame_height: int):
         self.frame_width = frame_width
         self.frame_height = frame_height
         
-        # Define ideal face oval dimensions
-        self.oval_width = int(frame_width * 0.4)
-        self.oval_height = int(frame_height * 0.6)
+        # Define face guide dimensions - made smaller and more oval
+        self.face_width_ratio = 0.25  # Much narrower
+        self.face_height_ratio = 0.55  # Taller relative to width
+        
+        # Calculate dimensions
+        self.oval_width = int(frame_width * self.face_width_ratio)
+        self.oval_height = int(frame_height * self.face_height_ratio)
         self.center_x = frame_width // 2
         self.center_y = frame_height // 2
         
-        # Define stricter tolerances
-        self.position_tolerance = 0.03  # 3% of frame dimension
-        self.rotation_tolerance = 3.0   # degrees
-        self.size_tolerance = 0.1       # 10% of ideal size
+        # Tolerances for easier fitting
+        self.position_tolerance = 0.05
+        self.size_tolerance = 0.15
         
-        # Store last valid position
-        self.last_valid_position = None
+        # Position tracking
         self.position_history = []
-        self.history_size = 10
+        self.history_size = 5
+        
+        # Pure white color and subtle transparency
+        self.guide_color = (255, 255, 255)  # White
+        self.overlay_alpha = 0.6
+        
+        # MediaPipe facial landmarks for PD calculation
+        self.LEFT_IRIS = [474, 475, 476, 477]
+        self.RIGHT_IRIS = [469, 470, 471, 472]
 
-    def check_position_stability(self, face_center):
-        """Check if face position is stable over time"""
+    def create_overlay(self, frame) -> np.ndarray:
+        """Create a transparent overlay with face oval guide"""
+        overlay = np.zeros_like(frame, dtype=np.uint8)
+        
+        # Draw main oval guide - clean white line
+        cv2.ellipse(overlay,
+                   (self.center_x, self.center_y),
+                   (self.oval_width//2, self.oval_height//2),
+                   0, 0, 360,
+                   self.guide_color,
+                   2)
+        
+        return overlay
+
+    def check_position_stability(self, face_center: Tuple[float, float]) -> bool:
+        """Check if face position is stable"""
         if len(self.position_history) >= self.history_size:
             self.position_history.pop(0)
         self.position_history.append(face_center)
@@ -44,84 +71,64 @@ class FaceAlignmentGuide:
         if len(self.position_history) < self.history_size:
             return False
             
-        # Calculate position variance
         x_coords = [pos[0] for pos in self.position_history]
         y_coords = [pos[1] for pos in self.position_history]
         x_variance = max(x_coords) - min(x_coords)
         y_variance = max(y_coords) - min(y_coords)
         
-        return (x_variance < self.frame_width * 0.02 and 
-                y_variance < self.frame_height * 0.02)
+        return (x_variance < self.frame_width * 0.03 and 
+                y_variance < self.frame_height * 0.03)
 
     def draw_guide(self, frame, face_landmarks) -> Tuple[bool, str]:
-        if face_landmarks is None:
-            self.last_valid_position = None
-            self.position_history = []
-            return False, "No face detected. Please look at the camera."
+        """Draw face guide and check position"""
+        try:
+            if face_landmarks is None:
+                self.position_history = []
+                return False, "No face detected"
 
-        # Get face coordinates and measurements
-        coords = np.array([[landmark.x * self.frame_width, landmark.y * self.frame_height] 
-                          for landmark in face_landmarks.landmark])
-        
-        face_left = np.min(coords[:, 0])
-        face_right = np.max(coords[:, 0])
-        face_top = np.min(coords[:, 1])
-        face_bottom = np.max(coords[:, 1])
-        
-        face_width = face_right - face_left
-        face_height = face_bottom - face_top
-        face_center = [(face_left + face_right) / 2, (face_top + face_bottom) / 2]
+            # Create and add overlay
+            overlay = self.create_overlay(frame)
+            cv2.addWeighted(overlay, self.overlay_alpha, frame, 1, 0, frame)
+            
+            # Get face coordinates
+            coords = np.array([[landmark.x * self.frame_width, landmark.y * self.frame_height] 
+                            for landmark in face_landmarks.landmark])
+            
+            # Calculate face measurements
+            face_left = np.min(coords[:, 0])
+            face_right = np.max(coords[:, 0])
+            face_top = np.min(coords[:, 1])
+            face_bottom = np.max(coords[:, 1])
+            
+            face_width = face_right - face_left
+            face_height = face_bottom - face_top
+            face_center = [(face_left + face_right) / 2, (face_top + face_bottom) / 2]
 
-        # Draw ideal position oval
-        cv2.ellipse(frame, 
-                   (self.center_x, self.center_y),
-                   (self.oval_width//2, self.oval_height//2),
-                   0, 0, 360, (255, 255, 255), 2)
+            # Position checks
+            x_offset = abs(face_center[0] - self.center_x) / self.frame_width
+            y_offset = abs(face_center[1] - self.center_y) / self.frame_height
+            width_diff = abs(face_width - self.oval_width) / self.oval_width
 
-        # Check size
-        ideal_width = self.oval_width
-        width_diff = abs(face_width - ideal_width) / ideal_width
-        if width_diff > self.size_tolerance:
-            return False, "Move closer or further to fit the oval"
+            # Simplified feedback
+            if width_diff > self.size_tolerance:
+                if face_width < self.oval_width:
+                    return False, "Move closer"
+                return False, "Move back"
+            
+            if x_offset > self.position_tolerance or y_offset > self.position_tolerance:
+                return False, "Center your face"
 
-        # Check position
-        x_offset = abs(face_center[0] - self.center_x) / self.frame_width
-        y_offset = abs(face_center[1] - self.center_y) / self.frame_height
-        
-        if x_offset > self.position_tolerance:
-            return False, "Move your face left/right to center"
-        if y_offset > self.position_tolerance:
-            return False, "Move your face up/down to center"
+            if not self.check_position_stability(face_center):
+                return False, "Hold still"
 
-        # Check rotation using eye landmarks
-        left_eye = np.mean(coords[468:472], axis=0)
-        right_eye = np.mean(coords[473:477], axis=0)
-        eye_angle = np.degrees(np.arctan2(right_eye[1] - left_eye[1],
-                                        right_eye[0] - left_eye[0]))
-        
-        if abs(eye_angle) > self.rotation_tolerance:
-            return False, "Keep your head level"
+            return True, "Perfect"
+            
+        except Exception as e:
+            print(f"Error in draw_guide: {str(e)}")
+            return False, "Error in alignment"
 
-        # Check position stability
-        if not self.check_position_stability(face_center):
-            return False, "Hold still..."
 
-        self.last_valid_position = face_center
-        return True, "Perfect! Maintaining position..."
 
-import cv2
-import numpy as np
-from typing import Tuple, Optional, Dict
-from dataclasses import dataclass
-
-@dataclass
-class VisualizationConfig:
-    """Configuration for visualization settings"""
-    text_color: Tuple[int, int, int] = (255, 255, 255)  # White text
-    guide_color: Tuple[int, int, int] = (255, 255, 255)  # White guide
-    error_color: Tuple[int, int, int] = (255, 255, 255)  # Keep all text white
-    font_scale: float = 0.6
-    thickness: int = 2
 
 class WebcamHandler:
     """Class to handle webcam capture and visualization"""

@@ -4,33 +4,69 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>PD Measurement</title>
+    <style>
+        .permission-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            display: none;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+        }
+
+        .permission-box {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            text-align: center;
+            max-width: 400px;
+            margin: 20px;
+        }
+
+        .permission-box button {
+            margin-top: 15px;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            background: #007bff;
+            color: white;
+            cursor: pointer;
+        }
+
+        .permission-box button:hover {
+            background: #0056b3;
+        }
+
+        #errorMessage {
+            color: red;
+            margin-top: 10px;
+            display: none;
+        }
+    </style>
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
 </head>
 <body>
+    <div class="permission-overlay" id="permissionDialog">
+        <div class="permission-box">
+            <h3>Camera Access Required</h3>
+            <p>To measure your PD, we need access to your camera. Please click the button below and allow camera access when prompted.</p>
+            <button onclick="requestCameraAccess()">Enable Camera</button>
+            <p id="errorMessage"></p>
+        </div>
+    </div>
+
     <div class="container">
         <h1>PD Measurement</h1>
         
-        <div class="instructions-card">
-            <h5 class="instructions-title">
-                <span class="icon">ℹ️</span>
-                Instructions
-            </h5>
-            <ol>
-                <li>Allow camera access when prompted</li>
-                <li>Click "Start Measurement" to begin</li>
-                <li>Position your face within the guide oval</li>
-                <li>Look straight at the camera</li>
-                <li>Keep your head level and still</li>
-                <li>Hold still during the countdown</li>
-            </ol>
-        </div>
-
         <div class="video-container">
-            <!-- Note: removed initial video feed source -->
-            <img id="videoFeed" style="display: none;" alt="Video feed">
+            <img id="videoFeed" src="{{ url_for('pupil.video_feed') }}" alt="Video feed" style="display: none;">
             <div class="progress-bar" id="stabilityProgress"></div>
-            <div class="status-overlay" id="statusMessage">Click Start Measurement to begin</div>
-            <div class="countdown-overlay" id="countdownOverlay" style="display: none;">
+            <div class="status-overlay" id="statusMessage">Position your face within the guide...</div>
+            <div class="countdown-overlay" id="countdownOverlay">
                 <span id="countdown">3</span>
             </div>
         </div>
@@ -72,6 +108,8 @@
         const measureBtn = document.getElementById('measureBtn');
         const stopBtn = document.getElementById('stopBtn');
         const videoFeed = document.getElementById('videoFeed');
+        const permissionDialog = document.getElementById('permissionDialog');
+        const errorMessage = document.getElementById('errorMessage');
         const countdownOverlay = document.getElementById('countdownOverlay');
         const countdownSpan = document.getElementById('countdown');
         const pdValue = document.getElementById('pdValue');
@@ -81,56 +119,67 @@
         const resultsCard = document.getElementById('resultsCard');
 
         let statusInterval;
-        let mediaStream = null;
+        let hasPermission = false;
 
-        async function requestCameraPermission() {
+        async function requestCameraAccess() {
             try {
-                // Request camera access first
-                mediaStream = await navigator.mediaDevices.getUserMedia({ 
-                    video: {
+                // First, try to get camera access
+                const stream = await navigator.mediaDevices.getUserMedia({ 
+                    video: { 
                         facingMode: "user",
                         width: { ideal: 1280 },
                         height: { ideal: 720 }
                     } 
                 });
                 
-                // If we got here, permission was granted
-                return true;
+                // If successful, stop the test stream
+                stream.getTracks().forEach(track => track.stop());
+                
+                // Set permission flag and hide dialog
+                hasPermission = true;
+                permissionDialog.style.display = 'none';
+                errorMessage.style.display = 'none';
+                
+                // Start the measurement process
+                startMeasurement();
             } catch (error) {
-                console.error('Camera permission error:', error);
-                statusMessage.textContent = "Camera access denied. Please allow camera access and try again.";
-                return false;
+                console.error('Camera access error:', error);
+                errorMessage.textContent = "Camera access was denied. Please enable camera access in your browser settings.";
+                errorMessage.style.display = 'block';
             }
         }
 
         async function startMeasurement() {
+            if (!hasPermission) {
+                permissionDialog.style.display = 'flex';
+                return;
+            }
+
             try {
-                // First request camera permission explicitly
-                const hasPermission = await requestCameraPermission();
-                if (!hasPermission) {
-                    statusMessage.textContent = "Camera permission is required. Please allow access and try again.";
-                    return;
+                const response = await fetch('/start_camera', { 
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                });
+                
+                const data = await response.json();
+                
+                if (data.status === 'success') {
+                    videoFeed.style.display = 'block';
+                    stopBtn.style.display = 'block';
+                    measureBtn.style.display = 'none';
+                    // Add timestamp to prevent caching
+                    videoFeed.src = "{{ url_for('pupil.video_feed') }}?" + new Date().getTime();
+                    statusInterval = setInterval(checkStatus, 100);
+                } else {
+                    throw new Error(data.message || 'Failed to start camera');
                 }
-
-                // Stop the media stream we used for permission
-                if (mediaStream) {
-                    mediaStream.getTracks().forEach(track => track.stop());
-                }
-
-                // Now start the Flask camera feed
-                const response = await fetch('/start_camera', { method: 'POST' });
-                if (!response.ok) {
-                    throw new Error('Failed to start camera');
-                }
-
-                videoFeed.src = "{{ url_for('pupil.video_feed') }}?" + new Date().getTime();
-                videoFeed.style.display = 'block';
-                stopBtn.style.display = 'block';
-                measureBtn.style.display = 'none';
-                statusInterval = setInterval(checkStatus, 100);
             } catch (error) {
                 console.error('Error starting measurement:', error);
-                statusMessage.textContent = "Error starting camera. Please try again.";
+                errorMessage.textContent = "Error starting camera. Please try again.";
+                errorMessage.style.display = 'block';
+                permissionDialog.style.display = 'flex';
             }
         }
 
@@ -191,10 +240,8 @@
                     }
 
                     resultsCard.style.display = 'block';
-
                     await stopMeasurement();
                     measureBtn.textContent = '📷 Measure Again';
-                    measureBtn.style.display = 'block';
                 } else {
                     handleMeasurementError("Measurement failed. Please try again.");
                 }
@@ -205,19 +252,13 @@
         }
 
         async function stopMeasurement() {
+            clearInterval(statusInterval);
             try {
-                clearInterval(statusInterval);
                 await fetch('/stop', { method: 'POST' });
-                
                 videoFeed.style.display = 'none';
                 stopBtn.style.display = 'none';
                 measureBtn.style.display = 'block';
                 stabilityProgress.style.width = '0%';
-                
-                if (mediaStream) {
-                    mediaStream.getTracks().forEach(track => track.stop());
-                    mediaStream = null;
-                }
             } catch (error) {
                 console.error('Stop error:', error);
             }
@@ -230,8 +271,21 @@
             statusMessage.style.display = 'block';
         }
 
+        // Add click event listeners
         measureBtn.addEventListener('click', startMeasurement);
         stopBtn.addEventListener('click', stopMeasurement);
+
+        // Check camera permission on page load
+        window.addEventListener('load', async () => {
+            try {
+                const stream = await navigator.mediaDevices.getUserMedia({ video: true });
+                stream.getTracks().forEach(track => track.stop());
+                hasPermission = true;
+            } catch (error) {
+                console.log('Initial camera check failed:', error);
+                permissionDialog.style.display = 'flex';
+            }
+        });
     </script>
 </body>
 </html>
