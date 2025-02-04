@@ -312,27 +312,45 @@ class PDMeasurement {
     // Update onResults method to include pupil drawing
     async onResults(results) {
         if (!this.ctx || !this.isRunning) return;
-    
+        
         // Clear canvas
-        this.ctx.clearRect(0, 0, this.frameWidth, this.frameHeight);
+        this.ctx.fillStyle = 'black';
+        this.ctx.fillRect(0, 0, this.frameWidth, this.frameHeight);
+        
+        // Save the current context state
+        this.ctx.save();
+        
+        // Flip horizontally
+        this.ctx.scale(-1, 1);
+        this.ctx.translate(-this.frameWidth, 0);
         
         // Draw camera feed
         this.ctx.drawImage(this.videoElement, 0, 0, this.frameWidth, this.frameHeight);
+        
+        // Restore the context to draw overlays normally
+        this.ctx.restore();
         
         // Draw face guide
         this.drawFaceGuide();
         
         if (results.multiFaceLandmarks && results.multiFaceLandmarks.length > 0) {
             const landmarks = results.multiFaceLandmarks[0];
-            const alignment = this.checkAlignment(landmarks);
             
-            // Draw pupils
-            this.drawPupils(landmarks);
+            // Transform landmarks to account for flipped view
+            const flippedLandmarks = landmarks.map(landmark => ({
+                ...landmark,
+                x: 1 - landmark.x // Flip x coordinates
+            }));
+            
+            const alignment = this.checkAlignment(flippedLandmarks);
+            
+            // Draw pupils with flipped coordinates
+            this.drawPupils(flippedLandmarks);
             
             if (alignment.aligned) {
                 this.stableFrameCount++;
                 if (this.stableFrameCount >= this.STABILITY_THRESHOLD && !this.measurementInProgress) {
-                    await this.startMeasurement(landmarks);
+                    await this.startMeasurement(flippedLandmarks);
                 }
             } else {
                 this.stableFrameCount = 0;
@@ -340,8 +358,10 @@ class PDMeasurement {
             
             // Update progress bar
             const progressBar = document.getElementById('stabilityProgress');
-            const progress = (this.stableFrameCount / this.STABILITY_THRESHOLD) * 100;
-            progressBar.style.width = `${Math.min(progress, 100)}%`;
+            if (progressBar) {
+                const progress = (this.stableFrameCount / this.STABILITY_THRESHOLD) * 100;
+                progressBar.style.width = `${Math.min(progress, 100)}%`;
+            }
             
             this.drawInstructions(alignment.message);
         } else {
